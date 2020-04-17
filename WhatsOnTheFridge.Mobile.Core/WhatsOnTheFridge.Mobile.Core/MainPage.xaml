@@ -11,7 +11,14 @@
         <Label Text="Welcome to Xamarin.Forms reload!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        
+        <Button Text="Add Item" Clicked="OnClick_ItemAdd">
+        </Button>
+        <Button Text="Add Location" Clicked="OnClick_LocationAdd">
+        </Button>
+        <Button Text="Get Items" Clicked="OnClick_GetItems">
+        </Button>
+        <Button Text="Get Locations" Clicked="OnClick_GetLocations">
+        </Button>
     </StackLayout>
 
 </ContentPage>

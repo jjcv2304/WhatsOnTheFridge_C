@@ -1,16 +1,32 @@
-﻿using System;
+﻿
+using WhatsOnThe.Model;
+using WhatsOnThe.Persistance.LocalDb;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WhatsOnTheFridge.Mobile.Core
 {
   public partial class App : Application
   {
+    static WhatsOnTheDatabase database;
+    public static WhatsOnTheDatabase Database
+    {
+      get
+      {
+        if (database == null)
+        {
+          //database = new WhatsOnTheDatabase();
+          database = new WhatsOnTheDatabase();
+        }
+        return database;
+      }
+    }
+
     public App()
     {
       InitializeComponent();
 
       MainPage = new MainPage();
+     
     }
 
     protected override void OnStart()
@@ -24,5 +40,8 @@ namespace WhatsOnTheFridge.Mobile.Core
     protected override void OnResume()
     {
     }
+
+
+
   }
 }
