@@ -1,6 +1,4 @@
-﻿
-using WhatsOnThe.Model;
-using WhatsOnThe.Persistance.LocalDb;
+﻿using WhatsOnThe.Persistance.LocalDb;
 using Xamarin.Forms;
 
 namespace WhatsOnTheFridge.Mobile.Core
@@ -26,7 +24,8 @@ namespace WhatsOnTheFridge.Mobile.Core
       InitializeComponent();
 
       MainPage = new MainPage();
-     
+      Database.Init();
+
     }
 
     protected override void OnStart()

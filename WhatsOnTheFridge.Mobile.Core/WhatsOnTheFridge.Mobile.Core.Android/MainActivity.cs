@@ -14,6 +14,8 @@ namespace WhatsOnTheFridge.Mobile.Core.Droid
   {
     protected override void OnCreate(Bundle savedInstanceState)
     {
+     
+
       SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
 
       TabLayoutResource = Resource.Layout.Tabbar;

@@ -7,7 +7,7 @@ namespace WhatsOnThe.Persistance.LocalDb
 {
   public static class Constants
   {
-    public const string DatabaseFilename = "WhatsOnThe9.db3";
+    public const string DatabaseFilename = "WhatsOnThe10.db3";
 
     public const SQLite.SQLiteOpenFlags Flags =
       // open the database in read/write mode
