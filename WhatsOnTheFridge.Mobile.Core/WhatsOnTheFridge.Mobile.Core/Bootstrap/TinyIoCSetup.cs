@@ -18,7 +18,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
 
            
       // View models - by default, TinyIoC will register concrete classes as multi-instance.
-      //_container.Register<BasketViewModel>();
+      ///_container.Register<BasketViewModel>();
 
       // Services - by default, TinyIoC will register interface registrations as singletons.
       //_container.Register<INavigationService, NavigationService>();

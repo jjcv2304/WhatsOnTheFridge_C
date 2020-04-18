@@ -25,4 +25,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\WhatsOnThe.Persistance.LocalDb\WhatsOnThe.Persistance.LocalDb.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+    <Folder Include="Views\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
 </Project>
