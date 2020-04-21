@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SQLite;
 using WhatsOnThe.Model;
 using WhatsOnThe.Persistance.LocalDb;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 
 namespace WhatsOnTheFridge.Mobile.Core.Repositories
 {

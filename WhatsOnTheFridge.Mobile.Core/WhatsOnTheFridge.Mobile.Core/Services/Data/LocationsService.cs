@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 
 namespace WhatsOnTheFridge.Mobile.Core.Services.Data
 {
-  class LocationsService
+  public class LocationsService : ILocationsService
   {
   }
 }

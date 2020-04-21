@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using WhatsOnThe.Model;
 
-namespace WhatsOnTheFridge.Mobile.Core.Repositories
+namespace WhatsOnTheFridge.Mobile.Core.Contracts.Repositories
 {
   public interface IItemsRepository
   {

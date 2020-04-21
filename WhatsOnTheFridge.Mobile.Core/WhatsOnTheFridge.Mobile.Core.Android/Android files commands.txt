@@ -1,0 +1,10 @@
+adb pull /data/user/0/com.companyname.whatsonthefridge.mobile.core/files/.local/share/WhatsOnThe.db3 D:\tmp
+
+adb push D:\tmp\WhatsOnThe10.db3 /data/user/0/com.companyname.whatsonthefridge.mobile.core/files/.local/share/ 
+         
+cd /data/user/0/com.companyname.whatsonthefridge.mobile.core/files/.local/share/
+
+
+
+
+ 

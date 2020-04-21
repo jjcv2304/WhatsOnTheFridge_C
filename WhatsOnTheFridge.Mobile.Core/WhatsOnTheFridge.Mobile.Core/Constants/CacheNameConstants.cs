@@ -4,7 +4,8 @@ using System.Text;
 
 namespace WhatsOnTheFridge.Mobile.Core.Constants
 {
-  class CacheNameConstants
+  public class CacheNameConstants
   {
+    public const string AllItems = "AllItems";
   }
 }

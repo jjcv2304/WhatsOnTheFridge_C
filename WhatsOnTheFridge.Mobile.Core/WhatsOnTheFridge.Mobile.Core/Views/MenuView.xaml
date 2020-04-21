@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:base="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels.Base;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:templates="clr-namespace:WhatsOnTheFridge.Mobile.Core.Views.Templates;assembly=WhatsOnTheFridge.Mobile.Core"
+             mc:Ignorable="d"
+             x:Class="WhatsOnTheFridge.Mobile.Core.Views.MenuView"
+             Title=" "
+             base:ViewModelLocator.AutoWireViewModel="true">
+    <ContentPage.Content>
+      <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="2*" />
+          <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+          <Image Source="carousel1.jpg" Aspect="AspectFill"></Image>
+          <Grid BackgroundColor="#444444" Opacity="0.8"/>
+          <Label Text="{Binding WelcomeText}" Style="{StaticResource MenuLabelStyle}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+          <ListView ItemsSource="{Binding MenuItems}"  CachingStrategy="RecycleElement"
+                    SeparatorVisibility="None" HasUnevenRows="True" >
+            <ListView.Behaviors>
+              <behaviours:EventToCommandBehavior EventName="ItemTapped" Command="{Binding MenuItemTappedCommand}">
+              </behaviours:EventToCommandBehavior>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <templates:MenuItemTemplate />
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </Grid>
+      </Grid>
+    </ContentPage.Content>
+</ContentPage>

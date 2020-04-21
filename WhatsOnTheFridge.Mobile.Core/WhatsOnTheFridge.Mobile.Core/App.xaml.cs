@@ -1,4 +1,7 @@
-﻿using WhatsOnThe.Persistance.LocalDb;
+﻿using System.Threading.Tasks;
+using WhatsOnThe.Persistance.LocalDb;
+using WhatsOnTheFridge.Mobile.Core.Bootstrap;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using Xamarin.Forms;
 
 namespace WhatsOnTheFridge.Mobile.Core
@@ -12,7 +15,6 @@ namespace WhatsOnTheFridge.Mobile.Core
       {
         if (database == null)
         {
-          //database = new WhatsOnTheDatabase();
           database = new WhatsOnTheDatabase();
         }
         return database;
@@ -23,9 +25,26 @@ namespace WhatsOnTheFridge.Mobile.Core
     {
       InitializeComponent();
 
-      MainPage = new MainPage();
-      Database.Init();
+      InitializeApp();
 
+      InitializeNavigation();
+
+    //  Database.Init();
+
+    }
+
+    private async Task InitializeNavigation()
+    {
+      var navigationService = TinyContainer.Resolve<INavigationService>();
+      await navigationService.InitializeAsync();
+    }
+
+    private void InitializeApp()
+    {
+      TinyContainer.RegisterDependencies();
+
+      //var shoppingCartViewModel = TinyContainer.Resolve<ShoppingCartViewModel>();
+      //shoppingCartViewModel.InitializeMessenger();
     }
 
     protected override void OnStart()
