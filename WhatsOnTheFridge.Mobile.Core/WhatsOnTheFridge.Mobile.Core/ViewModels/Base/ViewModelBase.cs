@@ -20,16 +20,16 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels.Base
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    //private bool _isBusy;
-    //public bool IsBusy
-    //{
-    //  get => _isBusy;
-    //  set
-    //  {
-    //    _isBusy = value;
-    //    OnPropertyChanged(nameof(IsBusy));
-    //  }
-    //}
+    private bool _isBusy;
+    public bool IsBusy
+    {
+      get => _isBusy;
+      set
+      {
+        _isBusy = value;
+        OnPropertyChanged(nameof(IsBusy));
+      }
+    }
 
     [NotifyPropertyChangedInvocator]
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -4,7 +4,7 @@ using System.Reflection;
 using WhatsOnTheFridge.Mobile.Core.Bootstrap;
 using Xamarin.Forms;
 
-namespace WhatsOnTheFridge.Mobile.Core.ViewModels.Base
+namespace WhatsOnTheFridge.Mobile.Core.Utility
 {
   public class ViewModelLocator
   {

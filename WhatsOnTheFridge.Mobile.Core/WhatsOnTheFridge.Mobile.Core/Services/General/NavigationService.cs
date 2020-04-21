@@ -87,14 +87,17 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.General
     {
       var page = CreatePage(viewModelType, parameter);
 
+      //Set Master Page
       if (page is MainView)
       {
         CurrentApplication.MainPage = page;
       }
+      //Set Detail Page
       else if (CurrentApplication.MainPage is MainView)
       {
         var mainPage = CurrentApplication.MainPage as MainView;
 
+        //It is not the first Detail
         if (mainPage.Detail is WhatsOnTheNavigationPage navigationPage)
         {
           var currentPage = navigationPage.CurrentPage;
@@ -104,6 +107,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.General
             await navigationPage.PushAsync(page);
           }
         }
+        //It is the first Detail
         else
         {
           navigationPage = new WhatsOnTheNavigationPage(page);
@@ -126,6 +130,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.General
         }
       }
 
+      //Method that allows VM to Initialize Data
       await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
     }
 
@@ -166,6 +171,8 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.General
       _mappings.Add(typeof(MainViewModel), typeof(MainView));
       _mappings.Add(typeof(MenuViewModel), typeof(MenuView));
       _mappings.Add(typeof(HomeViewModel), typeof(HomeView));
+      _mappings.Add(typeof(ListItemsViewModel), typeof(ListItemsView));
+      _mappings.Add(typeof(ItemDetailViewModel), typeof(ItemDetailView));
     }
   }
 }

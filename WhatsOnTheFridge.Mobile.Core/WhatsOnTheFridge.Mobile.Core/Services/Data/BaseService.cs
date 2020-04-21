@@ -12,9 +12,10 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
   {
     protected IBlobCache Cache;
 
-    public BaseService(IBlobCache cache)
+    public BaseService()
     {
-      Cache = cache ?? BlobCache.LocalMachine;
+     // Cache = cache ?? BlobCache.LocalMachine;
+     Cache = BlobCache.LocalMachine;
     }
 
     internal async Task<T> GetFromCache<T>(string cacheName)

@@ -7,8 +7,9 @@
              x:Class="WhatsOnTheFridge.Mobile.Core.Views.MainView"
              xmlns:views="clr-namespace:WhatsOnTheFridge.Mobile.Core.Views"
              xmlns:base="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels.Base;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
              Title="What's on the.."
-             base:ViewModelLocator.AutoWireViewModel="True"
+             utility:ViewModelLocator.AutoWireViewModel="True"
              MasterBehavior="Popover">
 
   <MasterDetailPage.Master>

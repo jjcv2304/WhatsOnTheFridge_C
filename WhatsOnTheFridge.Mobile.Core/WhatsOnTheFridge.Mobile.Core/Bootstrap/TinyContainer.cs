@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TinyIoC;
 using WhatsOnThe.Persistance.LocalDb;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using WhatsOnTheFridge.Mobile.Core.Repositories;
@@ -26,6 +27,8 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
       _container.Register<MenuViewModel>();
       _container.Register<HomeViewModel>();
       _container.Register<MainMenuItemViewModel>();
+      _container.Register<ListItemsViewModel>();
+      _container.Register<ItemDetailViewModel>();
 
       //Services data
       _container.Register<IItemsService, ItemsService>();
@@ -34,6 +37,10 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
       // Services - by default, TinyIoC will register interface registrations as singletons.
       _container.Register<INavigationService, NavigationService>();
       _container.Register<IDialogService, DialogService>();
+
+      //Repositories
+      //_container.Register<IItemsRepository, ItemsRepository>();
+      _container.Register<IItemsRepository, MockItemsRepository>();
     }
 
     public static object Resolve(Type typeName)

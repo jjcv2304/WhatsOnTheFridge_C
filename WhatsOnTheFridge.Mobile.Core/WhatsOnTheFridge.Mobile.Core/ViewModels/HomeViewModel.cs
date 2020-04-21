@@ -15,6 +15,8 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     public override async Task InitializeAsync(object data)
     {
       //PiesOfTheWeek = (await _catalogDataService.GetPiesOfTheWeekAsync()).ToObservableCollection();
+      // TODO List of food expiring in 7 days
+      // TODO Count of Items per Location
     }
   }
 }

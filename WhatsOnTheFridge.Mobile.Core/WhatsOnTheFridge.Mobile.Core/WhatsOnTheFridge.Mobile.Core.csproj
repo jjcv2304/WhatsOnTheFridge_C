@@ -30,12 +30,23 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Utility\" />
     <Folder Include="Templates\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ListItemsView.xaml.cs">
+      <DependentUpon>ListItemsView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\HomeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ItemDetailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ListItemsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainView.xaml">
