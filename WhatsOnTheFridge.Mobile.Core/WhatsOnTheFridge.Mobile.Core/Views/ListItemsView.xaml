@@ -11,7 +11,7 @@
              mc:Ignorable="d"
              Title="All Items">
 
-  <!--<ListView x:Name="MyListView"
+  <ListView x:Name="MyListView"
             ItemsSource="{Binding Items}"
             CachingStrategy="RecycleElement">
 
@@ -26,43 +26,38 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-          <Label Text="Testing page"></Label>
-          --><!--<Grid Margin="5" BackgroundColor="White" RowSpacing="2" HeightRequest="60">
+          <Grid RowSpacing="3" >
+           
             <Grid.RowDefinitions>
-              <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="50"></ColumnDefinition>
               <ColumnDefinition Width="*"></ColumnDefinition>
-              <ColumnDefinition Width="60"></ColumnDefinition>
-
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackLayout Grid.Row="0" Grid.Column="1">
-              <Label Grid.ColumnSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start"  Margin="2,2,1,2" Text="{Binding Name}"></Label>
+
+            <StackLayout Grid.Row="0" Grid.Column="0" >
+              <Label VerticalTextAlignment="Center" Grid.ColumnSpan="1"  Text="{Binding Name}" FontSize="Title"></Label>
             </StackLayout>
             
-            <StackLayout Grid.Row="0" Grid.Column="2">
-              <Label  Text="{Binding Quantity}" Margin="3" LineBreakMode="WordWrap"></Label>
-            </StackLayout>
-            
-            <StackLayout Grid.Row="1" Grid.Column="0">
-              <Label  Text="{Binding ExpirationDate}" Margin="3" LineBreakMode="WordWrap"></Label>
-            </StackLayout>
-            
-            <StackLayout Grid.Column="1" Grid.Row="1">
-              <Label  Text="{Binding AddedDate}" Margin="3" LineBreakMode="WordWrap"></Label>
+            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Grid.Row="0" Grid.Column="1"  >
+              <Label VerticalTextAlignment="Center" Text="Qty: " LineBreakMode="WordWrap"></Label>
+              <Label VerticalTextAlignment="Center" Text="{Binding Quantity}" LineBreakMode="WordWrap"></Label>
             </StackLayout>
 
-          </Grid>--><!--
+            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" >
+              <Label VerticalTextAlignment="Center" Text="Exp: " LineBreakMode="WordWrap"></Label>
+              <Label VerticalTextAlignment="Center" Text="{Binding ExpirationDate, Converter={StaticResource ShortDateConverter}}"  LineBreakMode="WordWrap"></Label>
+
+            </StackLayout>
+
+          </Grid>
         </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>
 
-  </ListView>-->
-  <StackLayout>
-    <Label Text="Items list page!"
-           VerticalOptions="CenterAndExpand" 
-           HorizontalOptions="CenterAndExpand" />
-  </StackLayout>
+  </ListView>
+
 </ContentPage>

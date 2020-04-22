@@ -22,6 +22,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Name = "Lechuga",
           Description = "Verdura",
           AddedDate = DateTime.Now,
+          Quantity = 1
         },        
         new Item()
         {
@@ -29,6 +30,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Name = "Tomates",
           Description = "Verdura",
           AddedDate = DateTime.Now,
+          Quantity = 10
         },
         new Item()
         {
@@ -36,7 +38,8 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Name = "Merluza",
           Description = "Fish",
           AddedDate = DateTime.Now.AddDays(-20),
-          ExpirationDate = DateTime.Now.AddDays(2)
+          ExpirationDate = DateTime.Now.AddDays(2),
+          Quantity = 5
         }
       };
     }
