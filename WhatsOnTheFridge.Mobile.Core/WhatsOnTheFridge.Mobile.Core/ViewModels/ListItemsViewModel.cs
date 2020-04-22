@@ -38,7 +38,6 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       }
     }
 
-
     private void OnItemTapped(Item selectedItem)
     {
       _navigationService.NavigateToAsync<ItemDetailViewModel>(selectedItem);
