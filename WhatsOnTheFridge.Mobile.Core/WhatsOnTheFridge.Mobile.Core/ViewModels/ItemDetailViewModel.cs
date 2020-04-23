@@ -4,6 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WhatsOnThe.Model;
+using WhatsOnTheFridge.Mobile.Core.Constants;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using WhatsOnTheFridge.Mobile.Core.Repositories;
 using WhatsOnTheFridge.Mobile.Core.ViewModels.Base;
@@ -13,12 +16,12 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 {
   public class ItemDetailViewModel : ViewModelBase
   {
-    private readonly ItemsRepository _itemsRepository;
+    private readonly IItemsService _itemsService;
     private Item _selectedItem;
 
-    public ItemDetailViewModel(INavigationService navigationService, IDialogService dialogService, ItemsRepository itemsRepository) : base(navigationService, dialogService)
+    public ItemDetailViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
-      _itemsRepository = itemsRepository;
+      _itemsService = itemsService;
     }
 
     public override async Task InitializeAsync(object item)
@@ -44,15 +47,18 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       OnPropertyChanged(nameof(SelectedItem));
     }
 
-    public ICommand ModifyItem => new Command(OnModifyItem);
+    public ICommand ModifyItemCommand => new Command(OnModifyItem);
 
     public async void OnModifyItem()
     {
-      await _itemsRepository.SaveItemAsync(SelectedItem);
+      await _itemsService.ModifyItem(SelectedItem);
+     // await _dialogService.ShowDialog("Item modified", "Success", "OK");
+      
+      await _navigationService.NavigateToAsync<ListItemsViewModel>();
 
       //Messages only for VM to VM comunitcation
-      //MessagingCenter.Send(this, MessagingConstants.AddPieToBasket, SelectedPie);
-      //await _dialogService.ShowDialog("Pie added to your cart", "Success", "OK");
+      //MessagingCenter.Send(this, MessagingConstants.ModifiedItem, SelectedItem);
+      //await _dialogService.ShowDialog("Item modified", "Success", "OK");
     }
   }
 }

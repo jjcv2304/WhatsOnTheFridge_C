@@ -40,22 +40,27 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
     public async Task AddItem(Item newItem)
     {
       await _itemsRepository.SaveItemAsync(newItem);
-
       await Cache.InvalidateAllObjects<Item>();
     }
-    
+
     public async Task RemoveItem(Item deleteItem)
     {
       await _itemsRepository.DeleteItemAsync(deleteItem);
 
       await Cache.InvalidateAllObjects<Item>();
     }
-    
+
     public async Task ModifyItem(Item updateItem)
     {
       await _itemsRepository.SaveItemAsync(updateItem);
 
-      await Cache.InvalidateAllObjects<Item>();
+      var itemsInCache = await GetFromCache<List<Item>>(CacheNameConstants.AllItems);
+      if (itemsInCache == null)
+        return;
+
+      var index = itemsInCache.FindIndex(i => i.Id == updateItem.Id);
+      itemsInCache[index] = updateItem;
+      await Cache.InsertObject(CacheNameConstants.AllItems, itemsInCache, DateTimeOffset.Now.AddMinutes(1));
     }
 
   }

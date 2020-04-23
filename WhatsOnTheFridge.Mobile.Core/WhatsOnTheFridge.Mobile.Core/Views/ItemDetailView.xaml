@@ -21,6 +21,7 @@
           <RowDefinition Height="50"></RowDefinition>
           <RowDefinition Height="50"></RowDefinition>
           <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="35*" />
@@ -50,6 +51,9 @@
 
         <Label Text="Location" Grid.Row="6" Grid.Column="0" VerticalOptions="Center"></Label>
         <Label Text="{Binding SelectedItem.Location}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center"></Label>
+
+
+        <Button Text="Save" Command="{Binding ModifyItemCommand}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center"></Button>
 
       </Grid>
     </ScrollView>

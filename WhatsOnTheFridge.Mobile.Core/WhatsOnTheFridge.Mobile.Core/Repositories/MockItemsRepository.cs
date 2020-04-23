@@ -61,7 +61,19 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
 
     public Task<int> SaveItemAsync(Item item)
     {
-      throw new NotImplementedException();
+      if (item.Id != 0)
+      {
+        var index = _items.FindIndex(i => i.Id == item.Id);
+        _items[index] = item;
+        return Task.FromResult(item.Id);
+      }
+      else
+      {
+        var lastId = _items.Max(i => i.Id);
+        item.Id = lastId + 1;
+        _items.Add(item);
+        return Task.FromResult(item.Id);
+      }
     }
 
     public Task<int> DeleteItemAsync(Item item)
