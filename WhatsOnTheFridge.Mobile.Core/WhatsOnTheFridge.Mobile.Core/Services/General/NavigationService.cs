@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using WhatsOnTheFridge.Mobile.Core.ViewModels;
@@ -90,46 +91,55 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.General
       //Set Master Page
       if (page is MainView)
       {
+        Debug.WriteLine("page is MainView ln93");
         CurrentApplication.MainPage = page;
       }
       //Set Detail Page
       else if (CurrentApplication.MainPage is MainView)
       {
+        Debug.WriteLine("CurrentApplication.MainPage is MainView ln99");
         var mainPage = CurrentApplication.MainPage as MainView;
 
         //It is not the first Detail
         if (mainPage.Detail is WhatsOnTheNavigationPage navigationPage)
         {
+          Debug.WriteLine("mainPage.Detail is WhatsOnTheNavigationPage navigationPage ln105");
           var currentPage = navigationPage.CurrentPage;
 
           if (currentPage.GetType() != page.GetType())
           {
+            Debug.WriteLine("currentPage.GetType() != page.GetType() ln110");
             await navigationPage.PushAsync(page);
           }
         }
         //It is the first Detail
         else
         {
+          Debug.WriteLine("else ln117");
           navigationPage = new WhatsOnTheNavigationPage(page);
           mainPage.Detail = navigationPage;
         }
-
+        Debug.WriteLine("end of elseif ln121");
         mainPage.IsPresented = false;
       }
       else
       {
+        Debug.WriteLine("else ln126");
         var navigationPage = CurrentApplication.MainPage as WhatsOnTheNavigationPage;
 
         if (navigationPage != null)
         {
+          Debug.WriteLine("navigationPage != null ln131");
           await navigationPage.PushAsync(page);
         }
         else
         {
+          Debug.WriteLine("else navigationPage != null ln136");
           CurrentApplication.MainPage = new WhatsOnTheNavigationPage(page);
         }
       }
 
+      Debug.WriteLine("end ln141");
       //Method that allows VM to Initialize Data
       await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
     }

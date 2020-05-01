@@ -5,7 +5,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace WhatsOnThe.Model
 {
-  public class Location
+  public class Location: DomainEntity
   {
     
     [PrimaryKey, AutoIncrement]

@@ -33,18 +33,18 @@ namespace WhatsOnTheFridge.Mobile.Core
 
     }
 
-    private async Task InitializeNavigation()
-    {
-      var navigationService = TinyContainer.Resolve<INavigationService>();
-      await navigationService.InitializeAsync();
-    }
-
     private void InitializeApp()
     {
       TinyContainer.RegisterDependencies();
 
       //var shoppingCartViewModel = TinyContainer.Resolve<ShoppingCartViewModel>();
       //shoppingCartViewModel.InitializeMessenger();
+    }
+
+    private async Task InitializeNavigation()
+    {
+      var navigationService = TinyContainer.Resolve<INavigationService>();
+      await navigationService.InitializeAsync();
     }
 
     protected override void OnStart()

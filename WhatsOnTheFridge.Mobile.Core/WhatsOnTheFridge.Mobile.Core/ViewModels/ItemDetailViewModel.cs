@@ -19,6 +19,19 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     private readonly IItemsService _itemsService;
     private Item _selectedItem;
 
+    public Item SelectedItem
+    {
+      get => _selectedItem;
+      set
+      {
+        _selectedItem = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public ICommand ModifyQuantityCommand => new Command<ValueChangedEventArgs>(OnModifyQuantity);
+    public ICommand ModifyItemCommand => new Command(OnModifyItem);
+
     public ItemDetailViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
       _itemsService = itemsService;
@@ -29,36 +42,22 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       SelectedItem = (Item)item;
     }
 
-    public Item SelectedItem
-    {
-      get => _selectedItem;
-      set
-      {
-        _selectedItem = value; 
-        OnPropertyChanged();
-      }
-    }
-
-    public ICommand ModifyQuantityCommand => new Command<ValueChangedEventArgs>(OnModifyQuantity);
-
-    private void OnModifyQuantity(ValueChangedEventArgs e)
-    {
-      SelectedItem.Quantity = (int)e.NewValue;
-      OnPropertyChanged(nameof(SelectedItem));
-    }
-
-    public ICommand ModifyItemCommand => new Command(OnModifyItem);
-
     public async void OnModifyItem()
     {
       await _itemsService.ModifyItem(SelectedItem);
-     // await _dialogService.ShowDialog("Item modified", "Success", "OK");
-      
+      // await _dialogService.ShowDialog("Item modified", "Success", "OK");
+
       await _navigationService.NavigateToAsync<ListItemsViewModel>();
 
       //Messages only for VM to VM comunitcation
       //MessagingCenter.Send(this, MessagingConstants.ModifiedItem, SelectedItem);
       //await _dialogService.ShowDialog("Item modified", "Success", "OK");
+    }
+
+    private void OnModifyQuantity(ValueChangedEventArgs e)
+    {
+      SelectedItem.Quantity = (int)e.NewValue;
+      OnPropertyChanged(nameof(SelectedItem));
     }
   }
 }

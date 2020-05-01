@@ -4,7 +4,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace WhatsOnThe.Model
 {
-  public class Item
+  public class Item: DomainEntity
   {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }

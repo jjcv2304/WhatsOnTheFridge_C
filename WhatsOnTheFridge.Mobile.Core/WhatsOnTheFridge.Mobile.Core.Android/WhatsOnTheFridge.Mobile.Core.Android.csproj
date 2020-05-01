@@ -96,7 +96,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WhatsOnTheFridge.Mobile.Core\WhatsOnTheFridge.Mobile.Core.csproj">
       <Project>{DE2C23CB-6858-46FA-86FC-E04C84B6F658}</Project>

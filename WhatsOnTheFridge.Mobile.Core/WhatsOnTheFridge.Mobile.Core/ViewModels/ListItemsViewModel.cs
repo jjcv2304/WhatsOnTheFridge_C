@@ -28,6 +28,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     }
     
     public ICommand ItemTappedCommand => new Command<Item>(OnItemTapped);
+    
     public ObservableCollection<Item> Items 
     {
       get => _items;
@@ -42,7 +43,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     {
       _navigationService.NavigateToAsync<ItemDetailViewModel>(selectedItem);
     }
-    
+
     public override async Task InitializeAsync(object data)
     {
       IsBusy = true;
