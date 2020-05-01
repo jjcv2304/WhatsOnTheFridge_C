@@ -42,7 +42,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       SelectedItem = (Item)item;
     }
 
-    public async void OnModifyItem()
+    private async void OnModifyItem()
     {
       await _itemsService.ModifyItem(SelectedItem);
       // await _dialogService.ShowDialog("Item modified", "Success", "OK");
@@ -56,6 +56,8 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     private void OnModifyQuantity(ValueChangedEventArgs e)
     {
+      if(e.NewValue < 0)
+        throw new ArgumentOutOfRangeException();
       SelectedItem.Quantity = (int)e.NewValue;
       OnPropertyChanged(nameof(SelectedItem));
     }

@@ -7,11 +7,11 @@ using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 
 namespace WhatsOnTheFridge.Core.Test.Mocks
 {
-  public class MockItemsRepository : IItemsRepository
+  public class FakeItemsRepository : IItemsRepository
   {
     public List<Item> Items;
 
-    public MockItemsRepository()
+    public FakeItemsRepository()
     {
       Items = new List<Item>();
       for (int i = 0; i < 30; i++)

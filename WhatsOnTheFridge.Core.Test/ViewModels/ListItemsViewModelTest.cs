@@ -7,6 +7,7 @@ using Akavache;
 using Moq;
 using WhatsOnThe.Model;
 using WhatsOnTheFridge.Core.Test.Mocks;
+using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using WhatsOnTheFridge.Mobile.Core.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.ViewModels;
@@ -22,9 +23,9 @@ namespace WhatsOnTheFridge.Core.Test.ViewModels
     {
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
-      var mockItemsService = new ItemsService(new MockItemsRepository(), new InMemoryBlobCache());
+      var mockItemsService = new Mock<IItemsService>();
      
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
+      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
 
       await listItemsViewModel.InitializeAsync(null);
 
@@ -36,7 +37,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModels
     {
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
-      var mockItemsRepository = new MockItemsRepository();
+      var mockItemsRepository = new FakeItemsRepository();
       var mockItemsService = new ItemsService(mockItemsRepository, new InMemoryBlobCache());
      
       var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
@@ -51,10 +52,9 @@ namespace WhatsOnTheFridge.Core.Test.ViewModels
     {
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
-      var mockItemsRepository = new MockItemsRepository();
-      var mockItemsService = new ItemsService(mockItemsRepository, new InMemoryBlobCache());
+      var mockItemsService = new Mock<IItemsService>();
      
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
+      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
       
       Assert.NotNull(listItemsViewModel.ItemTappedCommand);
     }
@@ -64,9 +64,8 @@ namespace WhatsOnTheFridge.Core.Test.ViewModels
     {
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
-      var mockItemsRepository = new MockItemsRepository();
-      var mockItemsService = new ItemsService(mockItemsRepository, new InMemoryBlobCache());
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
+      var mockItemsService = new Mock<IItemsService>();
+      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
       
       listItemsViewModel.ItemTappedCommand.Execute(It.IsAny<Item>());
 
@@ -78,14 +77,12 @@ namespace WhatsOnTheFridge.Core.Test.ViewModels
     {
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
-      var mockItemsRepository = new MockItemsRepository();
-      var mockItemsService = new ItemsService(mockItemsRepository, new InMemoryBlobCache());
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
+      var mockItemsService = new Mock<IItemsService>();
+      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
     
-      var selectedItem = mockItemsRepository.Items.First();
-      listItemsViewModel.ItemTappedCommand.Execute(selectedItem);
+      listItemsViewModel.ItemTappedCommand.Execute(It.IsAny<Item>());
 
-      mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemDetailViewModel>(selectedItem), Times.Once());
+      mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemDetailViewModel>(It.IsAny<Item>()), Times.Once());
     }
 
 
