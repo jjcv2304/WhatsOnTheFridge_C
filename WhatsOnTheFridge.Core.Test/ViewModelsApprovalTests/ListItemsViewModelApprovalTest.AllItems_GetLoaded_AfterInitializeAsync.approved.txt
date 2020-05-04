@@ -1,3 +1,3 @@
 ﻿Total items on list 2
-{"Id":1,"Name":"Test 1","Description":"Description 12","ExpirationDate":null,"AddedDate":"0001-01-01T00:00:00","Quantity":1,"LocationId":null,"Location":null}
+{"Id":1,"Name":"Test 1","Description":"Description 123","ExpirationDate":null,"AddedDate":"0001-01-01T00:00:00","Quantity":1,"LocationId":null,"Location":null}
 {"Id":3,"Name":"Test 3","Description":"Description 3","ExpirationDate":null,"AddedDate":"0001-01-01T00:00:00","Quantity":3,"LocationId":null,"Location":null}
