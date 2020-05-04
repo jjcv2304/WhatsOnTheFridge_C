@@ -1,5 +1,5 @@
-﻿#r "..\..\WhatsOnThe.Model\bin\Debug\netstandard2.0\WhatsOnThe.Model.dll"
-#r "..\..\WhatsOnTheFridge.Mobile.Core\WhatsOnTheFridge.Mobile.Core\bin\Debug\netstandard2.0\WhatsOnTheFridge.Mobile.Core.dll"
+﻿#r "..\..\..\WhatsOnThe.Model\bin\Debug\netstandard2.0\WhatsOnThe.Model.dll"
+#r "..\..\..\WhatsOnTheFridge.Mobile.Core\WhatsOnTheFridge.Mobile.Core\bin\Debug\netstandard2.0\WhatsOnTheFridge.Mobile.Core.dll"
 
 using System;
 using System.Collections.Generic;
@@ -20,8 +20,9 @@ Output.WriteLine($@"//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 using System;
 using System.CodeDom.Compiler;
+using WhatsOnTheFridge.Core.Test.Builders.General;
 
-namespace WhatsOnTheFridge.Core.Test.Mocks
+namespace WhatsOnTheFridge.Core.Test.Builders
 {{
 { BuildTypes() }
 }}");

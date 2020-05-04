@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="akavache.sqlite3" Version="6.0.20" />
+    <PackageReference Include="ApprovalTests" Version="5.1.0" />
+    <PackageReference Include="ApprovalUtilities" Version="5.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="Moq" Version="4.14.1" />
     <PackageReference Include="Scripty.MsBuild" Version="0.7.4">

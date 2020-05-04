@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using WhatsOnTheFridge.Core.Test.Fakes;
 
-namespace WhatsOnTheFridge.Core.Test.Mocks
+namespace WhatsOnTheFridge.Core.Test.Builders
 {
   public partial class ItemBuilder
   {

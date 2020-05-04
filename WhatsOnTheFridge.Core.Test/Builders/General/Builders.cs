@@ -9,8 +9,9 @@
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 using System;
 using System.CodeDom.Compiler;
+using WhatsOnTheFridge.Core.Test.Builders.General;
 
-namespace WhatsOnTheFridge.Core.Test.Mocks
+namespace WhatsOnTheFridge.Core.Test.Builders
 {
 
     [GeneratedCode("Builders", "1.0")]

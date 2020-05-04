@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace WhatsOnTheFridge.Core.Test.Mocks
+namespace WhatsOnTheFridge.Core.Test.Fakes
 {
     /// <summary>Creates and returns a variety of random value types.</summary>
     [DebuggerStepThrough]

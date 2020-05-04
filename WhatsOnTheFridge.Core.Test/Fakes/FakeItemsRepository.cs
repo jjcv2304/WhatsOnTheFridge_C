@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WhatsOnThe.Model;
+using WhatsOnTheFridge.Core.Test.Builders;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 
-namespace WhatsOnTheFridge.Core.Test.Mocks
+namespace WhatsOnTheFridge.Core.Test.Fakes
 {
   public class FakeItemsRepository : IItemsRepository
   {

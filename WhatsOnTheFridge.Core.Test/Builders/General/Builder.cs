@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WhatsOnTheFridge.Core.Test.Mocks
+namespace WhatsOnTheFridge.Core.Test.Builders.General
 {
   public abstract class Builder<T> where T : class
   {

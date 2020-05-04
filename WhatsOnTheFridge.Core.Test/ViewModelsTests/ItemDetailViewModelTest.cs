@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Akavache;
 using Moq;
 using WhatsOnThe.Model;
-using WhatsOnTheFridge.Core.Test.Mocks;
-using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
+using WhatsOnTheFridge.Core.Test.Fakes;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using WhatsOnTheFridge.Mobile.Core.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.ViewModels;
 using Xamarin.Forms;
 using Xunit;
+using ItemBuilder = WhatsOnTheFridge.Core.Test.Builders.ItemBuilder;
 
-namespace WhatsOnTheFridge.Core.Test.ViewModels
+namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
 {
   public class ItemDetailViewModelTest
   {
