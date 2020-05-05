@@ -25,7 +25,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     private async void OnViewAllItems()
     {
-      await _navigationService.NavigateToAsync<ListItemsViewModel>();
+      await _navigationService.NavigateToAsync<ItemsListViewModel>();
     }
     private async void OnViewAllLocations()
     {
@@ -33,7 +33,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     }
     private async void OnNewItem()
     {
-      await _navigationService.NavigateToAsync<NewItemViewModel>();
+      await _navigationService.NavigateToAsync<ItemNewViewModel>();
     }
     private async void OnNewLocation()
     {

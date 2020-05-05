@@ -181,9 +181,9 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.General
       _mappings.Add(typeof(MainViewModel), typeof(MainView));
       _mappings.Add(typeof(MenuViewModel), typeof(MenuView));
       _mappings.Add(typeof(HomeViewModel), typeof(HomeView));
-      _mappings.Add(typeof(ListItemsViewModel), typeof(ListItemsView));
+      _mappings.Add(typeof(ItemsListViewModel), typeof(ItemsListView));
       _mappings.Add(typeof(ItemDetailViewModel), typeof(ItemDetailView));
-      _mappings.Add(typeof(NewItemViewModel), typeof(NewItemView));
+      _mappings.Add(typeof(ItemNewViewModel), typeof(ItemNewView));
     }
   }
 }

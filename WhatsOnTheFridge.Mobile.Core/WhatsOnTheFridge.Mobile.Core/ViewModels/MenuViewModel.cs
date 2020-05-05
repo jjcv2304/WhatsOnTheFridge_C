@@ -64,7 +64,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       MenuItems.Add(new MainMenuItemViewModel
       {
         MenuText = "Items",
-        ViewModelToLoad = typeof(ListItemsViewModel),
+        ViewModelToLoad = typeof(ItemsListViewModel),
         MenuItemType = MenuItemType.Items
       });
 

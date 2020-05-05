@@ -33,7 +33,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests
           .AsEnumerable()
       );
       mockItemsService.Setup(m => m.GetAllItemsAsync()).Returns(fakeItemsList);
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
 
       await listItemsViewModel.InitializeAsync(null);
 

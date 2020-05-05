@@ -10,12 +10,12 @@ using Xamarin.Forms;
 
 namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 {
-  public class ListItemsViewModel: ViewModelBase
+  public class ItemsListViewModel: ViewModelBase
   {
     private readonly IItemsService _itemsService;
     private ObservableCollection<Item> _items;
 
-    public ListItemsViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
+    public ItemsListViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
       _itemsService = itemsService;
     }

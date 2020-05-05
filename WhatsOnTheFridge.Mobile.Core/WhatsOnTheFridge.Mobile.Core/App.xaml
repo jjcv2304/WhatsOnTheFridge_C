@@ -37,6 +37,8 @@
       <Color x:Key="WhatsOnPrimaryColor">#FF8000</Color>
       <Color x:Key="LightForeground">White</Color>
       <Color x:Key="HeaderGrey">#aaaaaa</Color>
+      <Color x:Key="PlainGrey">#aaaaaa</Color>
+      <Color x:Key="EntryGrey">Gray</Color>
 
       <Style x:Key="MainMenuButton" TargetType="{x:Type Button}">
         <Setter Property="BackgroundColor" Value="{StaticResource WhatsOnPrimaryColor}"></Setter>
@@ -58,6 +60,20 @@
         <Setter Property="VerticalOptions" Value="End"></Setter>
         <Setter Property="HorizontalOptions" Value="Start"></Setter>
         <Setter Property="Margin" Value="5"></Setter>
+      </Style>
+
+      <Style x:Key="RegularStyle" TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource PlainGrey}" />
+      </Style>
+
+      <Style x:Key="RegularEntryStyle" TargetType="{x:Type Entry}">
+        <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+        <Setter Property="HeightRequest" Value="15"></Setter>
+        <Setter Property="PlaceholderColor" Value="{StaticResource PlainGrey}"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
       </Style>
 
       <converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>

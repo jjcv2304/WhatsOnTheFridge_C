@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WhatsOnTheFridge.Mobile.Core.Views.ListItemsView"
+             x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemsListView"
              xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
              utility:ViewModelLocator.AutoWireViewModel="True"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"

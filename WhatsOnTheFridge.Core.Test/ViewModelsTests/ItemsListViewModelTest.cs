@@ -11,7 +11,7 @@ using Xunit;
 
 namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
 {
-  public class ListItemsViewModelTest
+  public class ItemsListViewModelTest
   {
     
     [Fact]
@@ -21,7 +21,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       var mockDialogService = new Mock<IDialogService>();
       var mockItemsService = new Mock<IItemsService>();
      
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
 
       await listItemsViewModel.InitializeAsync(null);
 
@@ -36,7 +36,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       var mockItemsRepository = new FakeItemsRepository();
       var mockItemsService = new ItemsService(mockItemsRepository, new InMemoryBlobCache());
      
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
 
       await listItemsViewModel.InitializeAsync(null);
 
@@ -50,7 +50,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       var mockDialogService = new Mock<IDialogService>();
       var mockItemsService = new Mock<IItemsService>();
      
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
       
       Assert.NotNull(listItemsViewModel.ItemTappedCommand);
     }
@@ -61,7 +61,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
       var mockItemsService = new Mock<IItemsService>();
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
       
       listItemsViewModel.ItemTappedCommand.Execute(It.IsAny<Item>());
 
@@ -69,12 +69,12 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
     }
 
     [Fact]
-    public void NavigationIsCalled_WithSelectedItem_WhenItemIsTapped()
+    public void NavigationToItemDetailViewIsCalled_WithSelectedItem_WhenItemIsTapped()
     {
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
       var mockItemsService = new Mock<IItemsService>();
-      var listItemsViewModel = new ListItemsViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
     
       listItemsViewModel.ItemTappedCommand.Execute(It.IsAny<Item>());
 

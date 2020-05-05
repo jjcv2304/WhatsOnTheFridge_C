@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
+             mc:Ignorable="d"
+             x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemNewView"
+             Title="Item Detail"
+             utility:ViewModelLocator.AutoWireViewModel="True">
+  <ContentPage.Content>
+    <ScrollView>
+      <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0" Margin="7" >
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="100"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="35*" />
+          <ColumnDefinition Width="65*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Item Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <Entry Text="{Binding NewITem.Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularEntryStyle}"></Entry>
+
+        <Label Text="Description" Grid.Row="1" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <Entry Text="{Binding NewITem.Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularEntryStyle}"></Entry>
+
+        <Label Text="ExpirationDate" Grid.Row="2" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <DatePicker Format="d" Date="{Binding NewITem.ExpirationDate}" Grid.Row="2" Grid.Column="1"/>
+
+        <Label Text="AddedDate" Grid.Row="3" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <DatePicker Format="d" Date="{Binding NewITem.AddedDate}" Grid.Row="3" Grid.Column="1"/>
+
+        <Label Text="Quantity" Grid.Row="4" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+          <Label Text="{Binding NewITem.Quantity, Mode=OneWay}"  Style="{StaticResource RegularStyle}"></Label>
+          <Stepper Maximum="99" Minimum="0" Increment="1" Value="{Binding NewITem.Quantity}"  VerticalOptions="Center" ></Stepper>
+        </StackLayout>
+
+        <!--
+
+        <Label Text="Location" Grid.Row="6" Grid.Column="0" VerticalOptions="Center"></Label>
+        <Label Text="{Binding SelectedItem.Location}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center"></Label>-->
+
+
+        <Button Text="Save" Command="{Binding SaveItemCommand}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center"></Button>
+
+      </Grid>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

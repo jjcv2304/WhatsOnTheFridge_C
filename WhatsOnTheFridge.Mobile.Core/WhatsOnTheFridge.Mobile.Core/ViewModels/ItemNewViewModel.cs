@@ -11,14 +11,14 @@ using Xamarin.Forms;
 
 namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 {
-  public class NewItemViewModel: ViewModelBase
+  public class ItemNewViewModel: ViewModelBase
   {
     private readonly IItemsService _itemsService;
     public Item NewITem { get; set; }
 
-    public ICommand ModifyItemCommand => new Command(OnModifyItem);
+    public ICommand SaveItemCommand => new Command(OnSaveItem);
 
-    public NewItemViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
+    public ItemNewViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
       _itemsService = itemsService;
     }
@@ -28,7 +28,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
      // TODO Dictionary<string, id> =   availableItems = GetAllNames 
     }
 
-    private async void OnModifyItem()
+    private async void OnSaveItem()
     {
       await _itemsService.AddItem(NewITem);
 

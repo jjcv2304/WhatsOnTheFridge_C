@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace WhatsOnTheFridge.Mobile.Core.Views
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class NewItemView : ContentPage
+  public partial class ItemNewView : ContentPage
   {
-    public NewItemView()
+    public ItemNewView()
     {
       InitializeComponent();
     }
