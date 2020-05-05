@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 {
-  public class ItemNewViewModel: ViewModelBase
+  public class ItemNewViewModel : ViewModelBase
   {
     private readonly IItemsService _itemsService;
     public Item NewITem { get; set; }
@@ -20,12 +20,24 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     public ItemNewViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
+      NewITem = GetInitializedNewItem();
       _itemsService = itemsService;
     }
 
     public override async Task InitializeAsync(object item)
     {
-     // TODO Dictionary<string, id> =   availableItems = GetAllNames 
+
+      // TODO Dictionary<string, id> =   availableItems = GetAllNames 
+    }
+
+    private Item GetInitializedNewItem()
+    {
+      return new Item()
+      {
+        Quantity = 0,
+        ExpirationDate = DateTime.Today.AddDays(7),
+        AddedDate = DateTime.Today
+      };
     }
 
     private async void OnSaveItem()
@@ -36,6 +48,6 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     }
 
-    
+
   }
 }

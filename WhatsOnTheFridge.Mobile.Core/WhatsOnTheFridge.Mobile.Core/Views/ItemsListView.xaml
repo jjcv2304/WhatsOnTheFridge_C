@@ -24,7 +24,7 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-          <Grid RowSpacing="3" >
+          <Grid  >
            
             <Grid.RowDefinitions>
               <RowDefinition Height="*"></RowDefinition>

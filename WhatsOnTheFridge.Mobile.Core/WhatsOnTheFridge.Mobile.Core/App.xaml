@@ -63,17 +63,32 @@
       </Style>
 
       <Style x:Key="RegularStyle" TargetType="{x:Type Label}">
-        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"></Setter>
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{StaticResource PlainGrey}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="Margin" Value="0, 0, 10, 0" />
       </Style>
 
       <Style x:Key="RegularEntryStyle" TargetType="{x:Type Entry}">
         <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
-        <Setter Property="HeightRequest" Value="15"></Setter>
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"></Setter>
         <Setter Property="PlaceholderColor" Value="{StaticResource PlainGrey}"></Setter>
         <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+
+      <Style x:Key="RegularStepperStyle" TargetType="{x:Type Stepper}">
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+
+      <Style x:Key="RegularDatePickerStyle" TargetType="{x:Type DatePicker}">
+        <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="Format" Value="dddd, dd MMMM yyyy" />
       </Style>
 
       <converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>
