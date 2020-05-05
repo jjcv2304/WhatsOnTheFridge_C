@@ -34,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\NewItemView.xaml.cs">
+      <DependentUpon>NewItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ListItemsView.xaml.cs">
       <DependentUpon>ListItemsView.xaml</DependentUpon>
     </Compile>

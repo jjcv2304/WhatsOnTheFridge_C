@@ -3,13 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:base="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels.Base;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
              mc:Ignorable="d"
-             x:Class="WhatsOnTheFridge.Mobile.Core.Views.HomeView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms Juan!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             x:Class="WhatsOnTheFridge.Mobile.Core.Views.HomeView" 
+             Title="Home">
+  <ContentPage.Content>
+    <Grid Padding="10">
+     
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <Button Text="Items" Grid.Row="0" Grid.Column="0" Style="{StaticResource MainMenuButton}"  Command="{Binding ViewAllItemsCommand}"/>
+      <Button Text="Locations" Grid.Row="0" Grid.Column="1" Style="{StaticResource MainMenuButton}" Command="{Binding ViewAllLocationsCommand}"/>
+      <Button Text="New Item" Grid.Row="1" Grid.Column="0" Style="{StaticResource MainMenuButton}" Command="{Binding NewItemCommand}"/>
+      <Button Text="New Location" Grid.Row="1" Grid.Column="1" Style="{StaticResource MainMenuButton}" Command="{Binding ViewAboutToExpireItemsCommand}"/>
+      <Button Text="About To Expire" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}" Command="{Binding ViewAllItemsCommand}"/>
+      <Button Text="Finished Items" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}"  Command="{Binding ViewFinishedItemsCommand}"/>
+      <Button Text="Export Lists" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}"   Command="{Binding ViewExportItemsMenuCommand}"/>
+
+    </Grid>
+  </ContentPage.Content>
 </ContentPage>

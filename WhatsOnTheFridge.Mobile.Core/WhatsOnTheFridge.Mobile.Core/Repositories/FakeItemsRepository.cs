@@ -8,11 +8,11 @@ using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 
 namespace WhatsOnTheFridge.Mobile.Core.Repositories
 {
-  public class MockItemsRepository : IItemsRepository
+  public class FakeItemsRepository : IItemsRepository
   {
     List<Item> _items;
 
-    public MockItemsRepository()
+    public FakeItemsRepository()
     {
       _items = new List<Item>()
       {

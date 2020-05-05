@@ -39,7 +39,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     public override async Task InitializeAsync(object item)
     {
-      SelectedItem = (Item)item;
+      await Task.Run(() => SelectedItem = (Item)item);
     }
 
     private async void OnModifyItem()

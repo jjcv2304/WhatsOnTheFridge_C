@@ -16,7 +16,11 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
   {
     private readonly IItemsRepository _itemsRepository;
 
-    public ItemsService(IItemsRepository itemsRepository, IBlobCache cache = null) : base(cache)
+    public ItemsService(IItemsRepository itemsRepository) : base(null)
+    {
+      _itemsRepository = itemsRepository;
+    }
+    public ItemsService(IItemsRepository itemsRepository, IBlobCache cache) : base(cache)
     {
       _itemsRepository = itemsRepository;
     }

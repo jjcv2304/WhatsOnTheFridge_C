@@ -11,9 +11,7 @@
              mc:Ignorable="d"
              Title="All Items">
 
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            CachingStrategy="RecycleElement">
+  <ListView x:Name="MyListView" ItemsSource="{Binding Items}" CachingStrategy="RecycleElement">
 
     <ListView.Behaviors>
       <behaviours:EventToCommandBehavior 

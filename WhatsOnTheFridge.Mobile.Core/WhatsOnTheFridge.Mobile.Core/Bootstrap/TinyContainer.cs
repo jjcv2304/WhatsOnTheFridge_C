@@ -40,7 +40,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
 
       //Repositories
       //_container.Register<IItemsRepository, ItemsRepository>();
-      _container.Register<IItemsRepository, MockItemsRepository>();
+      _container.Register<IItemsRepository, FakeItemsRepository>();
     }
 
     public static object Resolve(Type typeName)

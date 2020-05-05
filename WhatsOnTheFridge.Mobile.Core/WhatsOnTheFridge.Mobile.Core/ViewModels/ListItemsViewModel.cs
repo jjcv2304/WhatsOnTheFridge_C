@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WhatsOnThe.Model;
@@ -15,15 +12,11 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 {
   public class ListItemsViewModel: ViewModelBase
   {
-    private readonly INavigationService _navigationService;
-    private readonly IDialogService _dialogService;
     private readonly IItemsService _itemsService;
     private ObservableCollection<Item> _items;
 
     public ListItemsViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
-      _navigationService = navigationService;
-      _dialogService = dialogService;
       _itemsService = itemsService;
     }
     
