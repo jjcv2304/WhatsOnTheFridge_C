@@ -29,6 +29,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
       _container.Register<MainMenuItemViewModel>();
       _container.Register<ListItemsViewModel>();
       _container.Register<ItemDetailViewModel>();
+      _container.Register<NewItemViewModel>();
 
       //Services data
       _container.Register<IItemsService, ItemsService>();
