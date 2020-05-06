@@ -4,7 +4,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
-             xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
              mc:Ignorable="d"
              x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemNewView"
              Title="New Item"
@@ -14,13 +13,13 @@
       <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0" Margin="7" >
 
         <Grid.RowDefinitions>
-          <RowDefinition Height="50"></RowDefinition>
-          <RowDefinition Height="50"></RowDefinition>
-          <RowDefinition Height="50"></RowDefinition>
-          <RowDefinition Height="50"></RowDefinition>
-          <RowDefinition Height="50"></RowDefinition>
-          <RowDefinition Height="50"></RowDefinition>
-          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
           <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -29,22 +28,52 @@
           <ColumnDefinition Width="65*" />
         </Grid.ColumnDefinitions>
 
-        <Label Text="Item Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularStyle}" ></Label>
-        <Entry Text="{Binding NewITem.Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularEntryStyle}" ></Entry>
-        <!--<ListView x:Name="lstSuggest" Grid.Row="1" Grid.Column="1" IsVisible="False" ItemTapped="ItemSelected" SeparatorVisibility="None" />-->
+        <Label Text="Item Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularStyle}"  ></Label>
+        <Entry x:Name="EntryName" Text="{Binding NewITem.Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularEntryStyle}" TextChanged="OnEntryChanged" >
+        </Entry>
+        <!-- Invisible list for autocomplete Item Name
+             Shares StackLayout with Description to grow as needed
+        -->
+        <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Vertical" Spacing="0" Margin="-40 0 0 0" VerticalOptions="Start">
+          <!--List Search-->
+          <StackLayout Spacing="0" Margin="0">
+            <Grid  Margin="0" >
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*" />
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+              <ListView x:Name="LstSuggest"  Grid.Column="1" RowHeight="20"  IsVisible="False" SeparatorVisibility="None" ItemTapped="ItemSelected" Margin="0" VerticalOptions="Start">
+              </ListView>
+            </Grid>
+          </StackLayout>
+          <!--Description--> 
+          <StackLayout  Spacing="0" Margin="40 0 0 0">
+            <Grid  Margin="0">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*" />
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+              <Label Text="Description" Grid.Column="0"  Style="{StaticResource RegularStyle}"></Label>
+              <Entry Text="{Binding NewITem.Description}" Grid.Column="1" ></Entry>
+            </Grid>
+          </StackLayout>
 
+        </StackLayout>
 
-        <Label Text="Description" Grid.Row="2" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
-        <Entry Text="{Binding NewITem.Description}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RegularEntryStyle}"></Entry>
+        <Label Text="ExpirationDate" Grid.Row="2" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <DatePicker Date="{Binding NewITem.ExpirationDate}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RegularDatePickerStyle}" />
 
-        <Label Text="ExpirationDate" Grid.Row="3" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
-        <DatePicker Date="{Binding NewITem.ExpirationDate}" Grid.Row="3" Grid.Column="1" Style="{StaticResource RegularDatePickerStyle}" />
+        <Label Text="AddedDate" Grid.Row="3" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <DatePicker Date="{Binding NewITem.AddedDate}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource RegularDatePickerStyle}" />
 
-        <Label Text="AddedDate" Grid.Row="4" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
-        <DatePicker Date="{Binding NewITem.AddedDate}"  Grid.Row="4" Grid.Column="1" Style="{StaticResource RegularDatePickerStyle}" />
-
-        <Label Text="Quantity" Grid.Row="5" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
-        <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+        <Label Text="Quantity" Grid.Row="4" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+        <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
           <Label Text="{Binding NewITem.Quantity}"  Style="{StaticResource RegularStyle}" Margin="10, 0, 0 , 0"></Label>
           <Stepper Maximum="99" Minimum="0" Increment="1" Value="{Binding NewITem.Quantity}"  Style="{StaticResource RegularStepperStyle}" ></Stepper>
         </StackLayout>

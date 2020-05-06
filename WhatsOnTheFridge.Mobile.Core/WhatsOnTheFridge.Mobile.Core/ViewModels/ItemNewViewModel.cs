@@ -17,6 +17,9 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     public Item NewITem { get; set; }
 
     public ICommand SaveItemCommand => new Command(OnSaveItem);
+    //public ICommand NameChangedCommand => new Command<TextChangedEventArgs>(OnNameChangedCommand);
+    //public ICommand NameSelectedCommand => new Command<EventArgs>(OnNameSelectedCommand);
+    
 
     public ItemNewViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
     {
@@ -26,7 +29,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     public override async Task InitializeAsync(object item)
     {
-
+      //LstSuggest
       // TODO Dictionary<string, id> =   availableItems = GetAllNames 
     }
 
@@ -48,6 +51,6 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     }
 
-
+  
   }
 }
