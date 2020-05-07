@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
              mc:Ignorable="d"
              x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemNewView"
              Title="New Item"
@@ -29,12 +30,19 @@
         </Grid.ColumnDefinitions>
 
         <Label Text="Item Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularStyle}"  ></Label>
-        <Entry x:Name="EntryName" Text="{Binding NewITem.Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularEntryStyle}" TextChanged="OnEntryChanged" >
+        <Entry x:Name="EntryName" Text="{Binding NewITem.Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularEntryStyle}">
+          <Entry.Behaviors>
+            <behaviours:EventToCommandBehavior 
+            EventName="TextChanged" 
+            Command="{Binding NameChangedCommand}" 
+            CommandParameter="{Binding .}" >
+            </behaviours:EventToCommandBehavior>
+          </Entry.Behaviors>
         </Entry>
         <!-- Invisible list for autocomplete Item Name
              Shares StackLayout with Description to grow as needed
         -->
-        <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Vertical" Spacing="0" Margin="-40 0 0 0" VerticalOptions="Start">
+        <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Vertical" Spacing="0" Margin="0, -40, 0, 0" VerticalOptions="Start">
           <!--List Search-->
           <StackLayout Spacing="0" Margin="0">
             <Grid  Margin="0" >
@@ -45,12 +53,27 @@
                 <ColumnDefinition Width="35*" />
                 <ColumnDefinition Width="65*" />
               </Grid.ColumnDefinitions>
-              <ListView x:Name="LstSuggest"  Grid.Column="1" RowHeight="20"  IsVisible="False" SeparatorVisibility="None" ItemTapped="ItemSelected" Margin="0" VerticalOptions="Start">
+              <Label x:Name="ExistingItemsLabel" Text="Existing Items:" Grid.Column="0"  Style="{StaticResource RegularStyle}" Margin="0, 20, 0, 0" IsVisible="{Binding SuggestionsAreVisible }" ></Label>
+              <ListView ItemsSource="{Binding Suggestions}"  x:Name="LstSuggest"  Grid.Column="1" RowHeight="20"  IsVisible="{Binding SuggestionsAreVisible}" SeparatorVisibility="None" Margin="0" VerticalOptions="Start" HeightRequest="{Binding SuggestionsHeightRequest}">
+                <ListView.Behaviors>
+                  <behaviours:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding ItemTappedCommand}" 
+                    EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                  </behaviours:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <ViewCell>
+                      <Label Text="{Binding Name}" />
+                    </ViewCell>
+                  </DataTemplate>
+                </ListView.ItemTemplate>
               </ListView>
             </Grid>
           </StackLayout>
-          <!--Description--> 
-          <StackLayout  Spacing="0" Margin="40 0 0 0">
+          <!--Description-->
+          <StackLayout  Spacing="0" Margin="0, 40, 0, 0">
             <Grid  Margin="0">
               <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>

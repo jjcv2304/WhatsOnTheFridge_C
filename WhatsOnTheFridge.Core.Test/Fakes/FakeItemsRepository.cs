@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using WhatsOnThe.Model;
 using WhatsOnTheFridge.Core.Test.Builders;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 
 namespace WhatsOnTheFridge.Core.Test.Fakes
 {
@@ -24,6 +25,11 @@ namespace WhatsOnTheFridge.Core.Test.Fakes
     public Task<List<Item>> GetItemsAsync()
     {
       return Task.Run(() => Items);
+    }
+
+    public Task<List<ItemSimpleDto>> GetItemsNameAsync()
+    {
+      throw new NotImplementedException();
     }
 
     public Task<List<Item>> GetItemsNotDoneAsync()

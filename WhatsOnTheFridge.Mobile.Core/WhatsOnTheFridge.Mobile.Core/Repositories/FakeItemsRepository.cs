@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WhatsOnThe.Model;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 
 namespace WhatsOnTheFridge.Mobile.Core.Repositories
 {
@@ -23,7 +24,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Description = "Verdura",
           AddedDate = DateTime.Now,
           Quantity = 1
-        },        
+        },
         new Item()
         {
           Id = 2,
@@ -49,6 +50,15 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
       return Task.Run(() => _items);
     }
 
+    public Task<List<ItemSimpleDto>> GetItemsNameAsync()
+    {
+      var itemsAsync = GetItemsAsync();
+      itemsAsync.Wait();
+      var suggestion = new List<ItemSimpleDto>() { new ItemSimpleDto() { Id = 1001, Name = "manzana" }, new ItemSimpleDto() { Id = 1002, Name = "mango" }, new ItemSimpleDto() { Id = 1003, Name = "mandarina" } };
+      //return Task.Run(() => (List<ItemSimpleDto>)itemsAsync.Result.Select(i=>new ItemSimpleDto(){Id=i.Id, Name = i.Name}).Concat<ItemSimpleDto>(suggestion));
+      return Task.Run(() => itemsAsync.Result.Select(i=>new ItemSimpleDto(){Id=i.Id, Name = i.Name}).ToList().Concat<ItemSimpleDto>(suggestion).ToList());
+    }
+
     public Task<List<Item>> GetItemsNotDoneAsync()
     {
       throw new NotImplementedException();
@@ -56,7 +66,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
 
     public Task<Item> GetItemAsync(int id)
     {
-      return Task.Run(() => _items.FirstOrDefault(i=>i.Id==id));
+      return Task.Run(() => _items.FirstOrDefault(i => i.Id == id));
     }
 
     public Task<int> SaveItemAsync(Item item)

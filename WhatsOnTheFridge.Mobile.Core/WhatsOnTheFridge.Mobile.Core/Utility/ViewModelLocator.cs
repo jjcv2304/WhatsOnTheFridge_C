@@ -9,9 +9,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Utility
   public class ViewModelLocator
   {
     public static readonly BindableProperty AutoWireViewModelProperty =
-      BindableProperty.CreateAttached("AutoWireViewModel", typeof(bool),
-        typeof(ViewModelLocator), default(bool),
-        propertyChanged: OnAutoWireViewModelChanged);
+      BindableProperty.CreateAttached("AutoWireViewModel", typeof(bool), typeof(ViewModelLocator), default(bool), propertyChanged: OnAutoWireViewModelChanged);
 
     public static bool GetAutoWireViewModel(BindableObject bindable)
     {

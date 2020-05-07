@@ -8,6 +8,7 @@ using WhatsOnThe.Model;
 using WhatsOnTheFridge.Mobile.Core.Constants;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 using WhatsOnTheFridge.Mobile.Core.Repositories;
 
 namespace WhatsOnTheFridge.Mobile.Core.Services.Data
@@ -20,9 +21,15 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
     {
       _itemsRepository = itemsRepository;
     }
+    
     public ItemsService(IItemsRepository itemsRepository, IBlobCache cache) : base(cache)
     {
       _itemsRepository = itemsRepository;
+    }
+
+    public Task<Item> GetItemAsync(int id)
+    {
+      return _itemsRepository.GetItemAsync(id);
     }
 
     public async Task<IEnumerable<Item>> GetAllItemsAsync()
@@ -37,6 +44,22 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
       {
         var items = await _itemsRepository.GetItemsAsync();
         await Cache.InsertObject(CacheNameConstants.AllItems, items, DateTimeOffset.Now.AddMinutes(1));
+        return items;
+      }
+    }
+   
+    public async Task<List<ItemSimpleDto>> GetAllItemsNameAsync()
+    {
+      var itemsFromCache = await GetFromCache<List<ItemSimpleDto>>(CacheNameConstants.AllItemsName);
+
+      if (itemsFromCache != null)
+      {
+        return itemsFromCache;
+      }
+      else
+      {
+        var items = await _itemsRepository.GetItemsNameAsync();
+        await Cache.InsertObject(CacheNameConstants.AllItemsName, items, DateTimeOffset.Now.AddMinutes(1));
         return items;
       }
     }
