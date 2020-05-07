@@ -30,6 +30,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
       _container.Register<ItemsListViewModel>();
       _container.Register<ItemDetailViewModel>();
       _container.Register<ItemNewViewModel>();
+      _container.Register<LocationNewViewModel>();
 
       //Services data
       _container.Register<IItemsService, ItemsService>();
@@ -42,6 +43,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Bootstrap
       //Repositories
       //_container.Register<IItemsRepository, ItemsRepository>();
       _container.Register<IItemsRepository, FakeItemsRepository>();
+      _container.Register<ILocationsRepository, FakeLocationsRepository>();
     }
 
     public static object Resolve(Type typeName)

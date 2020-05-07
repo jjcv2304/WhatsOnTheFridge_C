@@ -37,7 +37,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     }
     private async void OnNewLocation()
     {
-      throw new NotImplementedException();
+      await _navigationService.NavigateToAsync<LocationNewViewModel>();
     }
     private async void OnViewAboutToExpireItems()
     {

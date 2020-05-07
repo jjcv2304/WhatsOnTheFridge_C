@@ -23,6 +23,11 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
       return _connection.Table<Location>().ToListAsync();
     }
 
+    public Task<Location> GetLocationAsync(int id)
+    {
+      return _connection.Table<Location>().Where(i => i.Id == id).FirstOrDefaultAsync();
+    }
+
     public Task<int> SaveLocationAsync(Location location)
     {
       if (location.Id != 0)

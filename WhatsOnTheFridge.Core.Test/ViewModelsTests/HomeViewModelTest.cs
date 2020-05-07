@@ -81,5 +81,41 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       
       Assert.NotNull(homeViewModel.NewLocationCommand);
     }
+
+    [Fact]
+    public void Navigation_ToNewItem_WhenNewItemClicked()
+    {
+      var mockNavigationService = new Mock<INavigationService>();
+      var mockDialogService = new Mock<IDialogService>();
+      var homeViewModel = new HomeViewModel(mockNavigationService.Object, mockDialogService.Object);
+
+      homeViewModel.NewItemCommand.Execute(null);
+
+      mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemNewViewModel>(), Times.Once());
+    }
+
+    [Fact]
+    public void Navigation_ToNewLocation_WhenNewLocationClicked()
+    {
+      var mockNavigationService = new Mock<INavigationService>();
+      var mockDialogService = new Mock<IDialogService>();
+      var homeViewModel = new HomeViewModel(mockNavigationService.Object, mockDialogService.Object);
+
+      homeViewModel.NewLocationCommand.Execute(null);
+
+      mockNavigationService.Verify(mock => mock.NavigateToAsync<LocationNewViewModel>(), Times.Once());
+    }
+
+    [Fact]
+    public void Navigation_ToAllItems_WhenViewItemsClicked()
+    {
+      var mockNavigationService = new Mock<INavigationService>();
+      var mockDialogService = new Mock<IDialogService>();
+      var homeViewModel = new HomeViewModel(mockNavigationService.Object, mockDialogService.Object);
+
+      homeViewModel.ViewAllItemsCommand.Execute(null);
+
+      mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemsListViewModel>(), Times.Once());
+    }
   }
 }

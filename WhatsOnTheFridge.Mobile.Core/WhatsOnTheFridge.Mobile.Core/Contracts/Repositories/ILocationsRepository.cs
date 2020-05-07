@@ -7,6 +7,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Contracts.Repositories
   public interface ILocationsRepository
   {
     Task<List<Location>> GetLocationsAsync();
+    Task<Location> GetLocationAsync(int id);
     Task<int> SaveLocationAsync(Location location);
   }
 }
