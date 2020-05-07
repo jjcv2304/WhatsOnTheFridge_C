@@ -120,7 +120,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
 
       itemDetailViewModel.ModifyItemCommand.Execute(null);
 
-      mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemsListViewModel>(), Times.Once());
+      mockNavigationService.Verify(mock => mock.NavigateBackAsync(), Times.Once());
     }
 
     [Fact]

@@ -53,7 +53,7 @@
                 <ColumnDefinition Width="35*" />
                 <ColumnDefinition Width="65*" />
               </Grid.ColumnDefinitions>
-              <Label x:Name="ExistingItemsLabel" Text="Existing Items:" Grid.Column="0"  Style="{StaticResource RegularStyle}" Margin="0, 20, 0, 0" IsVisible="{Binding SuggestionsAreVisible }" ></Label>
+              <Label x:Name="ExistingItemsLabel" Text="Existing Items:" Grid.Column="0"  Style="{StaticResource RegularStyle}" Margin="0, 40, 0, 0" IsVisible="{Binding SuggestionsAreVisible }" ></Label>
               <ListView ItemsSource="{Binding Suggestions}"  x:Name="LstSuggest"  Grid.Column="1" RowHeight="20"  IsVisible="{Binding SuggestionsAreVisible}" SeparatorVisibility="None" Margin="0" VerticalOptions="Start" HeightRequest="{Binding SuggestionsHeightRequest}">
                 <ListView.Behaviors>
                   <behaviours:EventToCommandBehavior 

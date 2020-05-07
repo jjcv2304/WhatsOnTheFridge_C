@@ -10,6 +10,8 @@ using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
 using WhatsOnTheFridge.Mobile.Core.ViewModels;
 using Xunit;
 using WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests.Extensions;
+using WhatsOnTheFridge.Mobile.Core.Dto;
+using Xamarin.Forms;
 
 namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests
 {
@@ -39,5 +41,6 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests
 
       Approvals.Verify(listItemsViewModel.Items.ToList().ToApprovalString());
     }
+    
   }
 }

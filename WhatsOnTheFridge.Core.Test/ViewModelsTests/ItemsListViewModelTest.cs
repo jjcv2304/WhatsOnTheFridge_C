@@ -2,6 +2,7 @@
 using Akavache;
 using Moq;
 using WhatsOnThe.Model;
+using WhatsOnTheFridge.Core.Test.Builders;
 using WhatsOnTheFridge.Core.Test.Fakes;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
@@ -63,7 +64,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       var mockItemsService = new Mock<IItemsService>();
       var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
       
-      listItemsViewModel.ItemTappedCommand.Execute(It.IsAny<Item>());
+      listItemsViewModel.ItemTappedCommand.Execute(ItemBuilder.Simple().Build());
 
       mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemDetailViewModel>(It.IsAny<Item>()), Times.Once());
     }
@@ -76,7 +77,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       var mockItemsService = new Mock<IItemsService>();
       var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
     
-      listItemsViewModel.ItemTappedCommand.Execute(It.IsAny<Item>());
+      listItemsViewModel.ItemTappedCommand.Execute(ItemBuilder.Simple().Build());
 
       mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemDetailViewModel>(It.IsAny<Item>()), Times.Once());
     }

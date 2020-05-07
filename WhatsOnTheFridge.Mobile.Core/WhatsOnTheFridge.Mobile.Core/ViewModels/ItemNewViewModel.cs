@@ -68,8 +68,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
       _allSuggestions = await _itemsService.GetAllItemsNameAsync();
       Suggestions = _allSuggestions.ToObservableCollection();
-      //Suggestions = (await _itemsService.GetAllItemsNameAsync()).ToObservableCollection();
-      //_allSuggestions = Suggestions;
+      
       IsBusy = false;
     }
 
@@ -93,25 +92,19 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     private void OnNameChangedCommand(TextChangedEventArgs e)
     {
-      if (e.NewTextValue != null && Suggestions != null)
-      {
-        if (_allSuggestions.Any(x => x.Name.StartsWith(e.NewTextValue)) && e.NewTextValue != string.Empty)
-        {
-          var items = new List<ItemSimpleDto>();
+      if (e.NewTextValue == null || Suggestions == null) return;
 
-          foreach (var item in _allSuggestions.Where(x => x.Name.StartsWith(e.NewTextValue)))
-          {
-            items.Add(item);
-          }
-          SuggestionsAreVisible = true;
-          Suggestions = items.ToObservableCollection();
-          SuggestionsHeightRequest = (items.Count + 1) * 23;
-        }
-        else
-        {
-          SuggestionsAreVisible = false;
-          Suggestions = _allSuggestions.ToObservableCollection();
-        }
+      if (_allSuggestions.Any(x => x.Name.StartsWith(e.NewTextValue)) && e.NewTextValue != string.Empty)
+      {
+        var items = _allSuggestions.Where(x => x.Name.StartsWith(e.NewTextValue)).ToList();
+        SuggestionsAreVisible = true;
+        Suggestions = items.ToObservableCollection();
+        SuggestionsHeightRequest = (items.Count + 1) * 23;
+      }
+      else
+      {
+        SuggestionsAreVisible = false;
+        Suggestions = _allSuggestions.ToObservableCollection();
       }
     }
 

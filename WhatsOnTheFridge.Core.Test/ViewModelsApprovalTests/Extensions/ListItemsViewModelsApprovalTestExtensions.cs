@@ -4,6 +4,7 @@ using System.Text;
 using WhatsOnThe.Model;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 
 namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests.Extensions
 {
@@ -25,6 +26,23 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests.Extensions
 
       return sb.ToString();
     }
-  }
 
+    public static string ToApprovalString(this List<ItemSimpleDto> items)
+    {
+      var sb = new StringBuilder();
+
+      sb.AppendFormat("Total items on list {0}", items.Count);
+      sb.AppendLine();
+
+      items.ForEach(i =>
+      {
+        var jsonItem = JsonSerializer.Serialize(i);
+        sb.Append(jsonItem);
+        sb.AppendLine();
+      });
+
+      return sb.ToString();
+    }
+
+  }
 }

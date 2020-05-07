@@ -29,7 +29,9 @@ namespace WhatsOnTheFridge.Core.Test.Fakes
 
     public Task<List<ItemSimpleDto>> GetItemsNameAsync()
     {
-      throw new NotImplementedException();
+      var itemsAsync = GetItemsAsync();
+      itemsAsync.Wait();
+      return Task.Run(() => itemsAsync.Result.Select(i=>new ItemSimpleDto(){Id=i.Id, Name = i.Name}).ToList());
     }
 
     public Task<List<Item>> GetItemsNotDoneAsync()
