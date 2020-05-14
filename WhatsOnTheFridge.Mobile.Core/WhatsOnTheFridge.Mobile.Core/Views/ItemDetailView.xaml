@@ -50,7 +50,7 @@
         </StackLayout>
 
         <Label Text="Location" Grid.Row="6" Grid.Column="0" VerticalOptions="Center"></Label>
-        <Label Text="{Binding SelectedItem.Location}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center"></Label>
+        <Label Text="{Binding SelectedItem.Location.Name}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center"></Label>
 
 
         <Button Text="Save" Command="{Binding ModifyItemCommand}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center"></Button>

@@ -15,6 +15,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
 
     public FakeItemsRepository()
     {
+
       _items = new List<Item>()
       {
         new Item()
@@ -23,7 +24,9 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Name = "Lechuga",
           Description = "Verdura",
           AddedDate = DateTime.Now,
-          Quantity = 1
+          Quantity = 1,
+          Location = new Location(){Id = 1, Name = "Freezer"},
+          LocationId = 1
         },
         new Item()
         {
@@ -31,7 +34,9 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Name = "Tomates",
           Description = "Verdura",
           AddedDate = DateTime.Now,
-          Quantity = 10
+          Quantity = 10,
+          Location = new Location(){Id = 1, Name = "Freezer"},
+          LocationId = 1
         },
         new Item()
         {
@@ -40,7 +45,9 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
           Description = "Fish",
           AddedDate = DateTime.Now.AddDays(-20),
           ExpirationDate = DateTime.Now.AddDays(2),
-          Quantity = 5
+          Quantity = 5,
+          Location = new Location(){Id = 2, Name = "Fredge"},
+          LocationId = 2
         }
       };
     }
@@ -89,6 +96,11 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
     public Task<int> DeleteItemAsync(Item item)
     {
       throw new NotImplementedException();
+    }
+
+    public Task<Item> GetItemWithLocationAsync(int id)
+    {
+      return Task.Run(() => _items.FirstOrDefault(i => i.Id == id));
     }
   }
 }

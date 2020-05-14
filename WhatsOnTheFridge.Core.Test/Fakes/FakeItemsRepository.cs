@@ -18,7 +18,9 @@ namespace WhatsOnTheFridge.Core.Test.Fakes
       Items = new List<Item>();
       for (int i = 0; i < 30; i++)
       {
-        Items.Add(ItemBuilder.TypicalWId().Build());
+        var location = LocationBuilder.TypicalWId().Build();
+        var item = ItemBuilder.TypicalWId().WithLocation(location).Build();
+        Items.Add(item);
       }
     }
 
@@ -64,6 +66,11 @@ namespace WhatsOnTheFridge.Core.Test.Fakes
     public Task<int> DeleteItemAsync(Item item)
     {
       throw new NotImplementedException();
+    }
+
+    public Task<Item> GetItemWithLocationAsync(int id)
+    {
+      return Task.Run(() => Items.FirstOrDefault(i=>i.Id==id));
     }
   }
 }

@@ -30,7 +30,7 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
       //todo improve, retrieve only desired columns
       var itemsAsync = GetItemsAsync();
       itemsAsync.Wait();
-      return Task.Run(() =>itemsAsync.Result.Select(i => new ItemSimpleDto {Id = i.Id, Name = i.Name}).ToList());
+      return Task.Run(() => itemsAsync.Result.Select(i => new ItemSimpleDto { Id = i.Id, Name = i.Name }).ToList());
     }
 
     public Task<List<Item>> GetItemsNotDoneAsync()
@@ -61,5 +61,12 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
       return _connection.DeleteAsync(item);
     }
 
+    public async Task<Item> GetItemWithLocationAsync(int id)
+    {
+      var item =  await _connection.Table<Item>().Where(i => i.Id == id).FirstOrDefaultAsync();
+      var location = await _connection.Table<Location>().Where(l => l.Id == item.LocationId).FirstOrDefaultAsync();
+      item.Location = location;
+      return item;
+    }
   }
 }

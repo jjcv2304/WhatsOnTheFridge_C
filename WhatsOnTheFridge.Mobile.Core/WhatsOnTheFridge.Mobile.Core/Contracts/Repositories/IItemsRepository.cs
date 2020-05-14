@@ -13,5 +13,6 @@ namespace WhatsOnTheFridge.Mobile.Core.Contracts.Repositories
     Task<Item> GetItemAsync(int id);
     Task<int> SaveItemAsync(Item item);
     Task<int> DeleteItemAsync(Item item);
+    Task<Item> GetItemWithLocationAsync(int id);
   }
 }

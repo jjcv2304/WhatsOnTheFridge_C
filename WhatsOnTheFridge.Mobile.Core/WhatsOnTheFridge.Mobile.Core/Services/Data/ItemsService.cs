@@ -32,6 +32,11 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
       return _itemsRepository.GetItemAsync(id);
     }
 
+    public Task<Item> GetItemWithLocationAsync(int id)
+    {
+      return _itemsRepository.GetItemWithLocationAsync(id);
+    }
+
     public async Task<IEnumerable<Item>> GetAllItemsAsync()
     {
       var itemsFromCache = await GetFromCache<List<Item>>(CacheNameConstants.AllItems);

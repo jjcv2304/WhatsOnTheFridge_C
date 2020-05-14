@@ -34,7 +34,8 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
     private void OnItemTapped(Item selectedItem)
     {
-      _navigationService.NavigateToAsync<ItemDetailViewModel>(selectedItem);
+      var itemWithLocation = _itemsService.GetItemWithLocationAsync(selectedItem.Id).Result;
+      _navigationService.NavigateToAsync<ItemDetailViewModel>(itemWithLocation);
     }
 
     public override async Task InitializeAsync(object data)

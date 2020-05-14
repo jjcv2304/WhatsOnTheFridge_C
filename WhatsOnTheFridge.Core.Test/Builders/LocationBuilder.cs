@@ -1,28 +1,24 @@
-﻿
-using WhatsOnTheFridge.Core.Test.Fakes;
+﻿using WhatsOnTheFridge.Core.Test.Fakes;
 
 namespace WhatsOnTheFridge.Core.Test.Builders
 {
-  public partial class ItemBuilder
+  public partial class LocationBuilder
   {
-    public static ItemBuilder Simple()
+    public static LocationBuilder Simple()
     {
       return Default()
         .WithName(() => GetRandom.String(1, 50));
     }
-    public static ItemBuilder Typical()
+    public static LocationBuilder Typical()
     {
       return Simple()
-        .WithDescription(() => GetRandom.String(1, 150))
-        .WithAddedDate(GetRandom.DateTime())
-        .WithQuantity(GetRandom.Int16(10));
+        .WithDescription(() => GetRandom.String(1, 150));
     }
-    public static ItemBuilder TypicalWId()
+    public static LocationBuilder TypicalWId()
     {
       return Typical()
         .WithId(GetRandom.Id);
     }
-
 
     //protected override void PostBuild(Category value)
     //{

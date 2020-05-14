@@ -101,6 +101,13 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       Assert.NotNull(itemNewViewModel.ItemTappedCommand);
     }
     [Fact]
+    public void LocationTappedCommand_NotNull()
+    {
+      var itemNewViewModel = ItemNewViewModel_WithMockDependencies();
+
+      Assert.NotNull(itemNewViewModel.LocationTappedCommand);
+    }
+    [Fact]
     public void Navigate_IsCalled_WhenItemIsSaved()
     {
       var itemNewViewModel = ItemNewViewModel_WithMockDependencies(out Mock<INavigationService> mockNavigationService);
@@ -176,6 +183,18 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       await itemNewViewModel.InitializeAsync(null);
 
       Assert.Equal(mockLocationsRepository._locations.Count, itemNewViewModel.Locations.Count);
+    }
+    [Fact]
+    public async Task NewItemLocation_IsSet_WhenLocationIsTapped()
+    {
+      var itemNewViewModel = ItemNewViewModel_WithMockDependencies_And_FakeRepository(out FakeLocationsRepository mockLocationsRepository);
+      await itemNewViewModel.InitializeAsync(null);
+
+      var tappedLocation = new LocationSimpleDto() { Id = GetRandom.Id() };
+      itemNewViewModel.LocationTappedCommand.Execute(tappedLocation);
+
+      Assert.Equal(tappedLocation.Id, itemNewViewModel.NewITem.LocationId);
+
     }
 
   }

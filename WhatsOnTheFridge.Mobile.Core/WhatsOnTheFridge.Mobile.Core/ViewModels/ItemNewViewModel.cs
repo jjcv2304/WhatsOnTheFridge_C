@@ -66,6 +66,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     public ICommand SaveItemCommand => new Command(OnSaveItem);
     public ICommand NameChangedCommand => new Command<TextChangedEventArgs>(OnNameChangedCommand);
     public ICommand ItemTappedCommand => new Command<ItemSimpleDto>(OnItemTapped);
+    public ICommand LocationTappedCommand => new Command<LocationSimpleDto>(OnLocationTapped);
 
     public ItemNewViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService, ILocationsService locationsService) : base(navigationService, dialogService)
     {
@@ -122,12 +123,15 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
         Suggestions = _allSuggestions.ToObservableCollection();
       }
     }
-
     private async void OnItemTapped(ItemSimpleDto selectedItem)
     {
       var item = await _itemsService.GetItemAsync(selectedItem.Id);
       await _navigationService.NavigateToAsync<ItemDetailViewModel>(item);
       await _navigationService.RemoveLastFromBackStackAsync();
+    }
+    private void OnLocationTapped(LocationSimpleDto selectedLocation)
+    {
+      NewITem.LocationId = selectedLocation.Id;
     }
   }
 }
