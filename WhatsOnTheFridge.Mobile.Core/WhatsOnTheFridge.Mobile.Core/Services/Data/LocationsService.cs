@@ -8,6 +8,7 @@ using WhatsOnThe.Model;
 using WhatsOnTheFridge.Mobile.Core.Constants;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 
 namespace WhatsOnTheFridge.Mobile.Core.Services.Data
 {
@@ -51,6 +52,20 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
       await Cache.InvalidateAllObjects<Location>();
     }
 
-    
+    public async Task<List<LocationSimpleDto>> GetAllLocationsNameAsync()
+    {
+      var locationsFromCache = await GetFromCache<List<LocationSimpleDto>>(CacheNameConstants.AllLocationsName);
+
+      if (locationsFromCache != null)
+      {
+        return locationsFromCache;
+      }
+      else
+      {
+        var locations = await _locationsRepository.GetLocationsNameAsync();
+        await Cache.InsertObject(CacheNameConstants.AllLocationsName, locations, DateTimeOffset.Now.AddMinutes(1));
+        return locations;
+      }
+    }
   }
 }

@@ -18,7 +18,9 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
   public class ItemNewViewModel : ViewModelBase
   {
     private readonly IItemsService _itemsService;
+    private readonly ILocationsService _locationsService;
     private ObservableCollection<ItemSimpleDto> _suggestions;
+    private ObservableCollection<LocationSimpleDto> _locations;
     private List<ItemSimpleDto> _allSuggestions;
     private bool _suggestionsAreVisible;
     private int _suggestionsHeightRequest;
@@ -30,6 +32,15 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       set
       {
         _suggestions = value;
+        OnPropertyChanged();
+      }
+    }
+    public ObservableCollection<LocationSimpleDto> Locations
+    {
+      get => _locations;
+      set
+      {
+        _locations = value;
         OnPropertyChanged();
       }
     }
@@ -56,10 +67,11 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     public ICommand NameChangedCommand => new Command<TextChangedEventArgs>(OnNameChangedCommand);
     public ICommand ItemTappedCommand => new Command<ItemSimpleDto>(OnItemTapped);
 
-    public ItemNewViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService) : base(navigationService, dialogService)
+    public ItemNewViewModel(INavigationService navigationService, IDialogService dialogService, IItemsService itemsService, ILocationsService locationsService) : base(navigationService, dialogService)
     {
       NewITem = GetInitializedNewItem();
       _itemsService = itemsService;
+      _locationsService = locationsService;
     }
 
     public override async Task InitializeAsync(object item)
@@ -68,7 +80,10 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
 
       _allSuggestions = await _itemsService.GetAllItemsNameAsync();
       Suggestions = _allSuggestions.ToObservableCollection();
-      
+
+      var locations = await _locationsService.GetAllLocationsNameAsync();
+      Locations = locations.ToObservableCollection();
+
       IsBusy = false;
     }
 

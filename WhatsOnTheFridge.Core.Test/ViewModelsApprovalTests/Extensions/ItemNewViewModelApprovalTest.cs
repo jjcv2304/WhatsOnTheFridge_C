@@ -22,6 +22,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests.Extensions
       var mockNavigationService = new Mock<INavigationService>();
       var mockDialogService = new Mock<IDialogService>();
       var mockItemsService = new Mock<IItemsService>();
+      var mockLocationService = new Mock<ILocationsService>();
 
       var fakeItemsList = Task.Run(() =>
         new List<ItemSimpleDto>()
@@ -42,7 +43,7 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsApprovalTests.Extensions
 
       mockItemsService.Setup(m => m.GetAllItemsNameAsync()).Returns(fakeItemsList);
       var itemNewViewModel =
-        new ItemNewViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object);
+        new ItemNewViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService.Object, mockLocationService.Object);
       await itemNewViewModel.InitializeAsync(null);
       return itemNewViewModel;
     }

@@ -7,7 +7,7 @@ using WhatsOnThe.Model;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Repositories;
 using WhatsOnTheFridge.Mobile.Core.Dto;
 
-namespace WhatsOnTheFridge.Mobile.Core.Repositories
+namespace WhatsOnTheFridge.Core.Test.Fakes
 {
   public class FakeLocationsRepository: ILocationsRepository
   {
@@ -42,18 +42,16 @@ namespace WhatsOnTheFridge.Mobile.Core.Repositories
     {
       return Task.Run(() => _locations);
     }
-
-    public Task<List<LocationSimpleDto>> GetLocationsNameAsync()
-    {
-      //todo improve, retrieve only desired columns
-      var locationsAsync = GetLocationsAsync();
-      locationsAsync.Wait();
-      return Task.Run(() =>locationsAsync.Result.Select(i => new LocationSimpleDto {Id = i.Id, Name = i.Name}).ToList());
-    }
-
+    
     public Task<Location> GetLocationAsync(int id)
     {
       return Task.Run(() => _locations.FirstOrDefault(i => i.Id == id));
+    }
+    public Task<List<LocationSimpleDto>> GetLocationsNameAsync()
+    {
+      var locationsAsync = GetLocationsAsync();
+      locationsAsync.Wait();
+      return Task.Run(() =>locationsAsync.Result.Select(i => new LocationSimpleDto {Id = i.Id, Name = i.Name}).ToList());
     }
 
     public Task<int> SaveLocationAsync(Location location)
