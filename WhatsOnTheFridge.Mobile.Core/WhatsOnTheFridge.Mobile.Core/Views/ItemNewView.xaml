@@ -14,13 +14,29 @@
       <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0" Margin="7" >
 
         <Grid.RowDefinitions>
-          <RowDefinition Height="5*"></RowDefinition>
-          <RowDefinition Height="5*"></RowDefinition>
-          <RowDefinition Height="5*"></RowDefinition>
-          <RowDefinition Height="5*"></RowDefinition>
-          <RowDefinition Height="5*"></RowDefinition>
-          <RowDefinition Height="50*"></RowDefinition>
-          <RowDefinition Height="5*"></RowDefinition>
+          <RowDefinition Height="1*"></RowDefinition>
+          <RowDefinition Height="1*"></RowDefinition>
+          <RowDefinition Height="1*"></RowDefinition>
+          <RowDefinition Height="1*"></RowDefinition>
+          <RowDefinition Height="1*"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="1*"></RowDefinition>
+
+          <!--<RowDefinition Height="25"></RowDefinition>
+          <RowDefinition Height="25"></RowDefinition>
+          <RowDefinition Height="25"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="50"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>-->
+
+          <!--<RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>-->
 
         </Grid.RowDefinitions>
 
@@ -42,7 +58,7 @@
         <!-- Invisible list for autocomplete Item Name
              Shares StackLayout with Description to grow as needed
         -->
-        <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Vertical" Spacing="0" Margin="0, -40, 0, 0" VerticalOptions="Start">
+        <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Spacing="0" Margin="0, 0, 0, 0" VerticalOptions="Start">
           <!--List Search-->
           <StackLayout Spacing="0" Margin="0">
             <Grid  Margin="0" >
@@ -53,7 +69,7 @@
                 <ColumnDefinition Width="35*" />
                 <ColumnDefinition Width="65*" />
               </Grid.ColumnDefinitions>
-              <Label x:Name="ExistingItemsLabel" Text="Existing Items:" Grid.Column="0"  Style="{StaticResource RegularStyle}" Margin="0, 40, 0, 0" IsVisible="{Binding SuggestionsAreVisible }" ></Label>
+              <Label x:Name="ExistingItemsLabel" Text="Existing Items:" Grid.Column="0"  Style="{StaticResource RegularStyle}" Margin="0, 0, 0, 0" IsVisible="False" ></Label>
               <ListView ItemsSource="{Binding Suggestions}"  x:Name="LstSuggest"  Grid.Column="1" RowHeight="20"  IsVisible="{Binding SuggestionsAreVisible}" SeparatorVisibility="None" Margin="0" VerticalOptions="Start" HeightRequest="{Binding SuggestionsHeightRequest}">
                 <ListView.Behaviors>
                   <behaviours:EventToCommandBehavior 
@@ -73,10 +89,10 @@
             </Grid>
           </StackLayout>
           <!--Description-->
-          <StackLayout  Spacing="0" Margin="0, 40, 0, 0">
+          <StackLayout  Spacing="0" Margin="0, 0, 0, 0">
             <Grid  Margin="0">
               <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35*" />
@@ -92,7 +108,7 @@
         <Label Text="ExpirationDate" Grid.Row="2" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
         <DatePicker Date="{Binding NewITem.ExpirationDate}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RegularDatePickerStyle}" />
 
-        <Label Text="AddedDate" Grid.Row="3" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
+           <Label Text="AddedDate" Grid.Row="3" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
         <DatePicker Date="{Binding NewITem.AddedDate}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource RegularDatePickerStyle}" />
 
         <Label Text="Quantity" Grid.Row="4" Grid.Column="0" Style="{StaticResource RegularStyle}"></Label>
@@ -102,35 +118,35 @@
         </StackLayout>
 
         <StackLayout  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Orientation="Horizontal" VerticalOptions="Start">
-            <Grid  >
+            <Grid>
               <Grid.RowDefinitions>
-                <RowDefinition Height="50*"></RowDefinition>
+                <RowDefinition Height="110"></RowDefinition>
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35*" />
                 <ColumnDefinition Width="65*" />
               </Grid.ColumnDefinitions>
-          <Label Text="Location" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularStyle}" VerticalOptions="Start"></Label>
-        <ListView ItemsSource="{Binding Locations}"  Grid.Row="0" Grid.Column="1" SeparatorVisibility="None"   VerticalOptions="Center" HorizontalOptions="Center" >
-          <ListView.Behaviors>
-            <behaviours:EventToCommandBehavior 
-              EventName="ItemTapped" 
-              Command="{Binding LocationTappedCommand}" 
-              EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
-            </behaviours:EventToCommandBehavior>
-          </ListView.Behaviors>
-          <ListView.ItemTemplate>
-            <DataTemplate>
-              <ViewCell>
-                <Label Text="{Binding Name}" />
-              </ViewCell>
-            </DataTemplate>
-          </ListView.ItemTemplate>
-        </ListView>
+              <Label Text="Location" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularStyle}" VerticalOptions="Start"></Label>
+              <ListView ItemsSource="{Binding Locations}" Grid.Row="0" Grid.Column="1" SeparatorVisibility="None" VerticalOptions="Center" HorizontalOptions="Center" >
+                <ListView.Behaviors>
+                  <behaviours:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding LocationTappedCommand}" 
+                    EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                  </behaviours:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <ViewCell>
+                      <Label Text="{Binding Name}" />
+                    </ViewCell>
+                  </DataTemplate>
+                </ListView.ItemTemplate>
+              </ListView>
               </Grid>
         </StackLayout>
 
-        <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+        <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="End">
           <Button Text="Save" Command="{Binding SaveItemCommand}" VerticalOptions="Center" HorizontalOptions="Center"></Button>
         </StackLayout>
         
