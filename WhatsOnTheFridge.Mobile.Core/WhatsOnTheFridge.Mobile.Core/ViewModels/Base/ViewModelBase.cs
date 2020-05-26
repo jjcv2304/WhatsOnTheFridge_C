@@ -18,6 +18,22 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels.Base
       _dialogService = dialogService;
     }
 
+    /// <summary>
+    /// Called when page is appearing.
+    /// </summary>
+    public virtual void OnAppearing()
+    {
+      // No default implementation. 
+    }
+
+    /// <summary>
+    /// Called when the view model is disappearing. View Model clean-up should be performed here.
+    /// </summary>
+    public virtual void OnDisappearing()
+    {
+      // No default implementation. 
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
     private bool _isBusy;

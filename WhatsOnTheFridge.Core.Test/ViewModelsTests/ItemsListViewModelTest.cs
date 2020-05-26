@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Akavache;
 using Moq;
 using WhatsOnThe.Model;
@@ -6,6 +7,7 @@ using WhatsOnTheFridge.Core.Test.Builders;
 using WhatsOnTheFridge.Core.Test.Fakes;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 using WhatsOnTheFridge.Mobile.Core.Services.Data;
 using WhatsOnTheFridge.Mobile.Core.ViewModels;
 using Xunit;
@@ -82,6 +84,25 @@ namespace WhatsOnTheFridge.Core.Test.ViewModelsTests
       mockNavigationService.Verify(mock => mock.NavigateToAsync<ItemDetailViewModel>(It.IsAny<Item>()), Times.Once());
     }
 
+    [Fact]
+    public async Task ItemsAboutToExpire_GetLoaded_WhenFilterIsAboutToExpire()
+    {
+      var mockNavigationService = new Mock<INavigationService>();
+      var mockDialogService = new Mock<IDialogService>();
+      var mockItemsRepository = new FakeItemsRepository();
+      //Specify items ExpirationDate
+      mockItemsRepository.Items.ForEach(i=>i.ExpirationDate = DateTime.Today.AddDays(15));
+      mockItemsRepository.Items[0].ExpirationDate = DateTime.Today.AddDays(-1);
+      mockItemsRepository.Items[1].ExpirationDate = DateTime.Today;
+      mockItemsRepository.Items[2].ExpirationDate = DateTime.Today.AddDays(1);
+      mockItemsRepository.Items[3].ExpirationDate = DateTime.Today.AddDays(4);
+      var mockItemsService = new ItemsService(mockItemsRepository, new InMemoryBlobCache());
+     
+      var listItemsViewModel = new ItemsListViewModel(mockNavigationService.Object, mockDialogService.Object, mockItemsService);
 
+      await listItemsViewModel.InitializeAsync(ItemListFilters.AboutToExpire);
+
+      Assert.Equal(4, listItemsViewModel.Items.Count);
+    }
   }
 }

@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
-             xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
-             mc:Ignorable="d"
-             x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemDetailView"
-             Title="Item Detail"
-             utility:ViewModelLocator.AutoWireViewModel="True">
+<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
+                xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
+                xmlns:pages="clr-namespace:WhatsOnTheFridge.Mobile.Core.Views.Base;assembly=WhatsOnTheFridge.Mobile.Core"
+                mc:Ignorable="d"
+                x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemDetailView"
+                Title="Item Detail"
+                utility:ViewModelLocator.AutoWireViewModel="True">
   <ContentPage.Content>
     <ScrollView>
       <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0" Margin="7" >
@@ -58,4 +59,4 @@
       </Grid>
     </ScrollView>
   </ContentPage.Content>
-</ContentPage>
+</pages:PageBase>

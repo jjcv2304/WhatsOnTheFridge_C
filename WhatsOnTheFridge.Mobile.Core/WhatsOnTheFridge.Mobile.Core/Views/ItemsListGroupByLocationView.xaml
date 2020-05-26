@@ -1,19 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PageBase xmlns="http://xamarin.com/schemas/2014/forms"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemsListView"
-                xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
-                utility:ViewModelLocator.AutoWireViewModel="True"
-                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                xmlns:base="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels.Base;assembly=WhatsOnTheFridge.Mobile.Core"
-                xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
-                xmlns:pages="clr-namespace:WhatsOnTheFridge.Mobile.Core.Views.Base;assembly=WhatsOnTheFridge.Mobile.Core"
-                xmlns:viewModels="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels;assembly=WhatsOnTheFridge.Mobile.Core"
-                mc:Ignorable="d"
-                Title="{Binding PageTitle}" >
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhatsOnTheFridge.Mobile.Core.Views.ItemsListGroupByLocationView"
+             xmlns:behaviours="clr-namespace:WhatsOnTheFridge.Mobile.Core.Behaviours;assembly=WhatsOnTheFridge.Mobile.Core"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:base="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels.Base;assembly=WhatsOnTheFridge.Mobile.Core"
+             xmlns:utility="clr-namespace:WhatsOnTheFridge.Mobile.Core.Utility;assembly=WhatsOnTheFridge.Mobile.Core"
+             mc:Ignorable="d"
+             Title="Items by Location">
 
-  <ListView x:Name="MyListView" ItemsSource="{Binding Items}" CachingStrategy="RecycleElement" >
+  <ListView x:Name="MyListView" ItemsSource="{Binding ItemsByLocation}"  IsGroupingEnabled="True" GroupDisplayBinding="{Binding Location}" GroupShortNameBinding="{Binding Location}">
 
     <ListView.Behaviors>
       <behaviours:EventToCommandBehavior 
@@ -22,6 +20,12 @@
         EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
       </behaviours:EventToCommandBehavior>
     </ListView.Behaviors>
+    
+    <ListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding Location}" TextColor="#f35e20" DetailColor="#503026" />
+      </DataTemplate>
+    </ListView.GroupHeaderTemplate>
 
     <ListView.ItemTemplate>
       <DataTemplate>
@@ -60,4 +64,4 @@
 
   </ListView>
 
-</pages:PageBase>
+</ContentPage>

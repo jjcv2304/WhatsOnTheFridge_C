@@ -51,7 +51,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
       await _navigationService.NavigateBackAsync();
 
       //Messages only for VM to VM comunitcation
-      //MessagingCenter.Send(this, MessagingConstants.ModifiedItem, SelectedItem);
+      MessagingCenter.Send(this, MessagingConstants.ModifiedItem);
       //await _dialogService.ShowDialog("Item modified", "Success", "OK");
     }
 

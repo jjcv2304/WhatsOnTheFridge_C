@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WhatsOnTheFridge.Mobile.Core.Contracts.Services.General;
+using WhatsOnTheFridge.Mobile.Core.Dto;
 using WhatsOnTheFridge.Mobile.Core.ViewModels.Base;
 using Xamarin.Forms;
 
@@ -22,10 +23,16 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     public ICommand ViewAboutToExpireItemsCommand => new Command(OnViewAboutToExpireItems);
     public ICommand ViewFinishedItemsCommand => new Command(OnViewFinishedItems);
     public ICommand ViewExportItemsMenuCommand => new Command(OnViewExportItemsMenu);
+    public ICommand ViewItemsByLocationCommand => new Command(OnViewItemsByLocationMenu);
+    
 
     private async void OnViewAllItems()
     {
       await _navigationService.NavigateToAsync<ItemsListViewModel>();
+    }
+    private async void OnViewItemsByLocationMenu()
+    {
+      await _navigationService.NavigateToAsync<ItemsListGroupByLocationViewModel>();
     }
     private async void OnViewAllLocations()
     {
@@ -41,7 +48,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     }
     private async void OnViewAboutToExpireItems()
     {
-      throw new NotImplementedException();
+      await _navigationService.NavigateToAsync<ItemsListViewModel>(ItemListFilters.AboutToExpire);
     }
     private async void OnViewFinishedItems()
     {

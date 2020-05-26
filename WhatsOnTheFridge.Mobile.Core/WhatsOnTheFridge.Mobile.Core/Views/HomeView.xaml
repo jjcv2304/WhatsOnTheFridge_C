@@ -29,9 +29,10 @@
       <Button Text="Locations" Grid.Row="0" Grid.Column="1" Style="{StaticResource MainMenuButton}" Command="{Binding ViewAllLocationsCommand}"/>
       <Button Text="New Item" Grid.Row="1" Grid.Column="0" Style="{StaticResource MainMenuButton}" Command="{Binding NewItemCommand}"/>
       <Button Text="New Location" Grid.Row="1" Grid.Column="1" Style="{StaticResource MainMenuButton}" Command="{Binding NewLocationCommand}"/>
-      <Button Text="About To Expire" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}" Command="{Binding ViewAllItemsCommand}"/>
+      <Button Text="About To Expire" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}" Command="{Binding ViewAboutToExpireItemsCommand}"/>
       <Button Text="Finished Items" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}"  Command="{Binding ViewFinishedItemsCommand}"/>
-      <Button Text="Export Lists" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}"   Command="{Binding ViewExportItemsMenuCommand}"/>
+      <Button Text="Items by Location" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}"  Command="{Binding ViewItemsByLocationCommand}"/>
+      <!--<Button Text="Export Lists" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MainMenuButton}"   Command="{Binding ViewExportItemsMenuCommand}"/>-->
 
     </Grid>
   </ContentPage.Content>

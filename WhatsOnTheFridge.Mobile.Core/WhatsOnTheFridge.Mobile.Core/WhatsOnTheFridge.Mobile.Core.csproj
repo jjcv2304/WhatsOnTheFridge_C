@@ -37,6 +37,9 @@
     <Compile Update="Views\ItemNewView.xaml.cs">
       <DependentUpon>ItemNewView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ItemsListGroupByLocationView.xaml.cs">
+      <DependentUpon>ItemsListGroupByLocationView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ItemsListView.xaml.cs">
       <DependentUpon>ItemsListView.xaml</DependentUpon>
     </Compile>
