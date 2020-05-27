@@ -6,7 +6,7 @@ using WhatsOnThe.Model;
 
 namespace WhatsOnTheFridge.Mobile.Core.Dto
 {
-  public class ItemsByLocationGrouping: ObservableCollection<Item>
+  public class ItemsByLocationGrouping: List<Item>
   {
     public int Id { get; set; }
     public string Location { get; set; }
