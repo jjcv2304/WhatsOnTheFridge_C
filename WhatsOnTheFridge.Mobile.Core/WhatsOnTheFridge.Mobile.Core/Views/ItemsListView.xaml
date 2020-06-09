@@ -11,53 +11,91 @@
                 xmlns:pages="clr-namespace:WhatsOnTheFridge.Mobile.Core.Views.Base;assembly=WhatsOnTheFridge.Mobile.Core"
                 xmlns:viewModels="clr-namespace:WhatsOnTheFridge.Mobile.Core.ViewModels;assembly=WhatsOnTheFridge.Mobile.Core"
                 mc:Ignorable="d"
-                Title="{Binding PageTitle}" >
+                Title="{Binding PageTitle}">
 
-  <ListView x:Name="MyListView" ItemsSource="{Binding Items}" CachingStrategy="RecycleElement" >
 
-    <ListView.Behaviors>
-      <behaviours:EventToCommandBehavior 
-        EventName="ItemTapped" 
-        Command="{Binding ItemTappedCommand}" 
-        EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
-      </behaviours:EventToCommandBehavior>
-    </ListView.Behaviors>
+  <StackLayout>
 
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <Grid  >
-           
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*"></ColumnDefinition>
-              <ColumnDefinition Width="*"></ColumnDefinition>
-              <ColumnDefinition Width="*"></ColumnDefinition>
-              <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+    <SearchBar x:Name="searchBar" Margin="15, 25, 30, 5">
+      <SearchBar.Behaviors>
+        <behaviours:EventToCommandBehavior EventName="TextChanged"
+                                           Command="{Binding PerformSearchCommand}"
+                                           CommandParameter="{Binding .}" />
+      </SearchBar.Behaviors>
+    </SearchBar>
 
-            <StackLayout Grid.Row="0" Grid.Column="0" >
-              <Label VerticalTextAlignment="Center" Grid.ColumnSpan="1"  Text="{Binding Name}" FontSize="Title"></Label>
-            </StackLayout>
-            
-            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Grid.Row="0" Grid.Column="1"  >
-              <Label VerticalTextAlignment="Center" Text="Qty: " LineBreakMode="WordWrap"></Label>
-              <Label VerticalTextAlignment="Center" Text="{Binding Quantity}" LineBreakMode="WordWrap"></Label>
-            </StackLayout>
+    <ListView x:Name="MyListView"
+              ItemsSource="{Binding Items}"
+              CachingStrategy="RecycleElement">
 
-            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" >
-              <Label VerticalTextAlignment="Center" Text="Exp: " LineBreakMode="WordWrap"></Label>
-              <Label VerticalTextAlignment="Center" Text="{Binding ExpirationDate, Converter={StaticResource ShortDateConverter}}"  LineBreakMode="WordWrap"></Label>
+      <ListView.Behaviors>
+        <behaviours:EventToCommandBehavior EventName="ItemTapped"
+                                           Command="{Binding ItemTappedCommand}"
+                                           EventArgsConverter="{StaticResource LocalItemTappedConverter}">
+        </behaviours:EventToCommandBehavior>
+      </ListView.Behaviors>
 
-            </StackLayout>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid>
 
-          </Grid>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+              </Grid.ColumnDefinitions>
 
-  </ListView>
+              <StackLayout Grid.Row="0"
+                           Grid.Column="0" 
+                           Grid.ColumnSpan="3"
+                           Grid.RowSpan="2"
+                           VerticalOptions="Center">
+                <Label VerticalTextAlignment="Center"
+                       Text="{Binding Name}"
+                       FontSize="Medium"></Label>
+              </StackLayout>
 
+              <StackLayout HorizontalOptions="EndAndExpand"
+                           Orientation="Horizontal"
+                           Grid.Row="0"
+                           Grid.Column="3"
+                           VerticalOptions="Center">
+                <Label VerticalTextAlignment="Center"
+                       Text="Qty: "
+                       LineBreakMode="WordWrap"></Label>
+                <Label VerticalTextAlignment="Center"
+                       Text="{Binding Quantity}"
+                       LineBreakMode="WordWrap"></Label>
+              </StackLayout>
+
+              <StackLayout HorizontalOptions="EndAndExpand"
+                           VerticalOptions="Center"
+                           Orientation="Horizontal"
+                           Grid.Row="0"
+                           Grid.Column="4"
+                           Grid.ColumnSpan="2">
+                <Label VerticalTextAlignment="Center"
+                       Text="Exp: "
+                       LineBreakMode="WordWrap"></Label>
+                <Label VerticalTextAlignment="Center"
+                       Text="{Binding ExpirationDate, Converter={StaticResource ShortDateConverter}}"
+                       LineBreakMode="WordWrap"></Label>
+
+              </StackLayout>
+
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
+    </ListView>
+  </StackLayout>
 </pages:PageBase>
