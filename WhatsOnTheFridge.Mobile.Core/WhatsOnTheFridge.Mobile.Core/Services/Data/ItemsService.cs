@@ -72,7 +72,11 @@ namespace WhatsOnTheFridge.Mobile.Core.Services.Data
     public async Task AddItem(Item newItem)
     {
       await _itemsRepository.SaveItemAsync(newItem);
-      await Cache.InvalidateAllObjects<Item>();
+      await Cache.Invalidate(CacheNameConstants.AllItems);
+      await Cache.Invalidate(CacheNameConstants.AllItemsName);
+      //await Cache.InvalidateAllObjects<Item>();
+      //await Cache.InvalidateAll();
+      //await Cache.InvalidateAllObjects();
     }
 
     public async Task RemoveItem(Item deleteItem)

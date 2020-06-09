@@ -102,7 +102,7 @@ namespace WhatsOnTheFridge.Mobile.Core.ViewModels
     private async void OnSaveItem()
     {
       await _itemsService.AddItem(NewITem);
-
+      
       await _navigationService.NavigateToAsync<HomeViewModel>();
 
     }
